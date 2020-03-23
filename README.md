@@ -1,6 +1,6 @@
 # [Problema]
 
-Pueden ver los siguiente videos para poder comprender la base del código fuente. 
+Pueden ver los siguientes videos para poder comprender la base del código fuente dentro de este repositorio. 
 
 https://www.youtube.com/watch?v=vqWvGgx_iXY&list=PL0IrPQPrkqoEUDXn1nsjzxSX2zflWtJW-
 
