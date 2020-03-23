@@ -10,9 +10,9 @@ public class TodoController {
     @Autowired
     private TodoService service;
 
-    @GetMapping(value = "api/{groupId}/todos")
-    public Iterable<Todo> list(@PathVariable("groupId") String groupListId){
-        return service.list(groupListId);
+    @GetMapping(value = "api/todos")
+    public Iterable<Todo> list(){
+        return service.list();
     }
     
     @PostMapping(value = "api/todo")
@@ -27,7 +27,6 @@ public class TodoController {
         }
         throw new RuntimeException("No existe el id para actualziar");
     }
-
 
     @DeleteMapping(value = "api/{id}/todo")
     public void delete(@PathVariable("id")Long id){
