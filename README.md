@@ -1,5 +1,9 @@
 # [Problema]
 
+Pueden ver los siguiente videos para poder comprender la base del código fuente. 
+
+https://www.youtube.com/watch?v=vqWvGgx_iXY&list=PL0IrPQPrkqoEUDXn1nsjzxSX2zflWtJW-
+
 ## KATA Full Stack
 
 En el siguiente proyecto se presenta algunos conceptos de Full Stack, trabajando con Spring Boot + ReactJS.
