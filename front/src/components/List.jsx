@@ -52,6 +52,9 @@ const List = () => {
         });
     };
   
+//funcion que me devuelve si campo nombre esta completado.
+const btnTurn = (param) => param? true : false;
+
     const decorationDone = {
       textDecoration: "line-through",
     };
@@ -82,7 +85,7 @@ const List = () => {
                     <button onClick={() => onDelete(todo.id)}>Eliminar</button>
                   </td>
                   <td>
-                    <button onClick={() => onEdit(todo)}>Editar</button>
+                    <button disabled={btnTurn(todo.completed)} onClick={() => onEdit(todo)}>Editar</button>
                   </td>
                 </tr>
               );
