@@ -10,40 +10,35 @@ import javax.persistence.Table;
 public class Todo {
     @Id
     @GeneratedValue
-    private Long id;
+    private Long id_todo;
     private String name;
     private boolean completed;
-    private String idGroupList;
+    private Long groupList;
 
-    public String getIdGroupList() {
-        return idGroupList;
+    public Long getGroupList() {
+        return groupList;
     }
 
-    public void setIdGroupList(String idGroupList) {
-        this.idGroupList = idGroupList;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setGroupList(Long groupList) {
+        this.groupList = groupList;
     }
 
     public boolean isCompleted() {
         return completed;
     }
-
     public void setCompleted(boolean completed) {
         this.completed = completed;
+    }
+    public void setId_todo(Long id) {
+        this.id_todo = id;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public Long getId_todo() {
+        return id_todo;
     }
 }

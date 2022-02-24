@@ -1,40 +1,39 @@
 package co.com.sofka.crud.model;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
-@Table(name = "GroupList")
 public class GroupList {
     @Id
     @GeneratedValue
-    private Long id;
-    private String nameGroup;
+    private Long id_groupList;
+    private String name;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "groupList")
+    private List<Todo> todos;
 
-    //la persistencia cascada guarda los datos de varios objetos/tablas a la misma vez
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "idGroupList")
-
-    private Set<Todo> todo;
-
-    public Set<Todo> getTodo() {
-        return todo;
+    public Long getId_groupList() {
+        return id_groupList;
     }
 
-    public Long getId() {
-        return id;
+    public void setId_groupList(Long id) {
+        this.id_groupList = id;
     }
 
-    public void setId(Long idGroupList) {
-        this.id = idGroupList;
+    public String getName() {
+        return name;
     }
 
-    public String getNameGroup() {
-        return nameGroup;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setNameGroup(String nameGroup) {
-        this.nameGroup = nameGroup;
+    public List<Todo> getTodos() {
+        return todos;
     }
 
+    public void setTodos(List<Todo> todos) {
+        this.todos = todos;
+    }
 }

@@ -15,8 +15,12 @@ public class GroupListService {
         return repository.findAll();
     }
 
-    public GroupList save(GroupList todo){
-        return repository.save(todo);
+    public GroupList save(GroupList category){
+        return repository.save(category);
+    }
+
+    public GroupList update(GroupList category){
+        return repository.save(category);
     }
 
     public void delete(Long id){
@@ -26,5 +30,4 @@ public class GroupListService {
     public GroupList get(Long id){
         return repository.findById(id).orElseThrow();
     }
-
 }

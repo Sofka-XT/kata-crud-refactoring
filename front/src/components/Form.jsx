@@ -7,7 +7,7 @@ import {HOST_API} from "../common/HOST_API"
 import {Store} from "../common/Store"
 
 
-const Form = () => {
+const Form = ({id_groupList}) => {
     
     const formRef = useRef(null);
     const {
@@ -24,6 +24,7 @@ const Form = () => {
         name: state.name,
         id: null,
         completed: false,
+        groupList: id_groupList
       };
   
       fetch(HOST_API + "/todo", {
@@ -48,6 +49,7 @@ const Form = () => {
         name: state.name,
         id: item.id,
         isCompleted: item.isCompleted,
+        groupList: item.groupList
       };
   
       fetch(HOST_API + "/todo", {
@@ -65,6 +67,10 @@ const Form = () => {
         });
     };
   
+    //funcion que me devuelve si campo nombre esta completado.
+    const noName = (name) => name === undefined || name.length === 0 ?true:false;
+      
+
     return (
       <form ref={formRef}>
         <input
@@ -76,8 +82,10 @@ const Form = () => {
             setState({ ...state, name: event.target.value });
           }}
         ></input>
-        {item.id && <button onClick={onEdit}>Actualizar</button>}
-        {!item.id && <button onClick={onAdd}>Crear</button>}
+        <div>
+        {item.id && <button type="button" onClick={onEdit}>Actualizar</button>}
+        {!item.id && <button disabled={noName(state.name)} onClick={onAdd}>Crear</button>}
+        </div>
       </form>
     );
   };
