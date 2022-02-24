@@ -7,7 +7,6 @@ function App() {
   return <div>
     <h3>DashBoard</h3>
   <Todo/>
-  <Todo/>
   </div>
 }
 
