@@ -5,11 +5,12 @@ public class TodoDTO {
         private Long id;
         private String nameDTO;
         private boolean completedDTO;
-        private String identificador;
+        private String identificator;
 
         public Long getId() {
             return id;
         }
+
 
         public void setId(Long id) {
             this.id = id;
@@ -32,11 +33,11 @@ public class TodoDTO {
         }
 
         public String getIdentificador() {
-            return identificador;
+            return identificator;
         }
 
         public void setIdentificador(String identificador) {
-            this.identificador = identificador;
+            this.identificator = identificador;
         }
     }
 

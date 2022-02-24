@@ -1,6 +1,6 @@
 package co.com.sofka.crud.controller;
 
-import co.com.sofka.crud.model.GroupList;
+/*import co.com.sofka.crud.model.GroupList;*/
 import co.com.sofka.crud.service.GroupListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +13,7 @@ public class GroupListController {
     @Autowired
     private GroupListService service;
 
-    @GetMapping(value = "/group")
+    /*@GetMapping(value = "/group")
     public Iterable<GroupList> list(){
         return service.list();
     }
@@ -40,5 +40,5 @@ public class GroupListController {
     public GroupList get(@PathVariable("id") Long id){
         return service.get(id);
     }
-
+*/
 }
