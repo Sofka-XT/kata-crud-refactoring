@@ -1,8 +1,8 @@
 import React, { useContext, useRef, useState } from 'react';
-import { HOST_API } from '../util/HOST_API';
-import { Store } from "./Store";
+import { HOST_API } from '../common/HOST_API';
+import { Store } from "../common/Store";
 
-const GroupList = () => {
+const FormGroup = () => {
   const formRef = useRef(null);
   const { dispatch, state: { groupList } } = useContext(Store);
   const item = groupList.item;
@@ -48,4 +48,4 @@ const GroupList = () => {
   )
 };
 
-export default GroupList;
+export default FormGroup;

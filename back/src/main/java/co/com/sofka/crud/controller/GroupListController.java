@@ -12,7 +12,7 @@ public class GroupListController {
 
     @Autowired
     private GroupListService service;
-    @GetMapping(value = "/groupList")
+    @GetMapping(value = "/groupLists")
     public Iterable<GroupList> list(){
         return service.list();
     }
