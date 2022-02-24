@@ -8,10 +8,7 @@ import {Store} from "../common/Store"
 
 
 const Form = () => {
-    console.log()
-
-   
-
+    
     const formRef = useRef(null);
     const {
       dispatch,
