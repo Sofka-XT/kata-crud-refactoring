@@ -242,6 +242,23 @@ function App() {
       .then((items) => setToDos(items))
   }, [])
 
+    const crearToDo = async (toDo) => {
+      try {
+        const response = await fetch(urlApi + "/todo", {
+          method: "POST",
+          body: JSON.stringify(toDo),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        setToDos(...ToDos, toDo)
+
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     const actualizarToDo = async (toDo) => {
     try {
       const response = await fetch(urlApi + "/todo", {
@@ -279,7 +296,9 @@ function App() {
   return (
     <StoreProvider>
 
-      <ToDoForm />
+      <ToDoForm
+        crearToDo={crearToDo}
+      />
 
       <ToDoList
         ToDos={ToDos}
