@@ -34,7 +34,7 @@ const FormGroupList = () => {
     return (
       <Fragment key={groupList.id_groupList}>
         {/* los elementos como los div repetidos en iteracion, tienen que tener keys sino ERROR en consola. */}
-        <div className="col-6" id={groupList.id_groupList}>
+        <div className="col-6 mb-2" id={groupList.id_groupList}>
           <div className="card">
             <div className="row m-3 bkGrey" key={groupList.id_groupList}>
               <div className="col">
