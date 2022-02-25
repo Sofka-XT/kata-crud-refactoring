@@ -25,23 +25,31 @@ const FormGroupList = () => {
     }).then((list) => {
       dispatch({ type: "delete-groupList", id_groupList });
     });
-    //borro todo el div, x alguna razon no lo elimina sin el:
-    document.getElementById(id_groupList).innerHTML=""
+    //borro todo el contenido del div correspondiente que se encuentra dentro de un div row en todo.jsx
+    const divfromDel = document.getElementById("rowD");
+    divfromDel.removeChild(document.getElementById(id_groupList));
   };
 
   return lista.map((groupList) => {
     return (
       <Fragment key={groupList.id_groupList}>
         {/* los elementos como los div repetidos en iteracion, tienen que tener keys sino ERROR en consola. */}
-        <div className="row border border-dark m-3 bkGrey" id={groupList.id_groupList} key={groupList.id_groupList}>
-          <div className="col">
-          <h2>{groupList.name}</h2>
-          <button className="btn btn-outline-danger" onClick={() => onDelete(groupList.id_groupList)}>
-            Eliminar Grupo
-          </button>
+        <div className="col-6" id={groupList.id_groupList}>
+          <div className="card">
+            <div className="row m-3 bkGrey" key={groupList.id_groupList}>
+              <div className="col">
+                <h2>{groupList.name}</h2>
+                <button
+                  className="btn btn-outline-danger"
+                  onClick={() => onDelete(groupList.id_groupList)}
+                >
+                  Eliminar Grupo
+                </button>
+              </div>
+              <Form id={groupList} />
+              <List id={groupList} />
+            </div>
           </div>
-          <Form id={groupList} />
-          <List id={groupList} />
         </div>
       </Fragment>
     );

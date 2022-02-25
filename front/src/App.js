@@ -7,12 +7,13 @@ import Todo from "./components/Todo";
 function App() {
   return <Fragment>
 <div className="container">
-<nav class="navbar navbar-light bg-light">
-  <div class="container-fluid">
+<nav className="navbar navbar-light bg-light">
+  <div className="container-fluid">
   <h3>DashBoard</h3>
   </div>
-</nav>
+</nav><div>
   <Todo/>
+  </div>
   </div>
   </Fragment>
 }

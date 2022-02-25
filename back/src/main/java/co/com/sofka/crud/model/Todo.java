@@ -26,18 +26,23 @@ public class Todo {
     public boolean isCompleted() {
         return completed;
     }
+
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
+
     public void setId_todo(Long id) {
         this.id_todo = id;
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public Long getId_todo() {
         return id_todo;
     }

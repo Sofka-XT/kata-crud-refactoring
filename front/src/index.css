@@ -1,9 +1,9 @@
 body {
   margin: 45px;
-  font-family:monospace;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: larger;
+ 
 }
 
 code {
@@ -15,3 +15,4 @@ code {
 .bkGrey{
   background-color: rgba(143, 143, 143, 0.144);
 }
+

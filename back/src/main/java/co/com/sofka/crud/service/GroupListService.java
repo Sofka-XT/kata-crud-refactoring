@@ -15,12 +15,12 @@ public class GroupListService {
         return repository.findAll();
     }
 
-    public GroupList save(GroupList category){
-        return repository.save(category);
+    public GroupList save(GroupList groupList){
+        return repository.save(groupList);
     }
 
-    public GroupList update(GroupList category){
-        return repository.save(category);
+    public GroupList update(GroupList groupList){
+        return repository.save(groupList);
     }
 
     public void delete(Long id){

@@ -37,7 +37,7 @@ const List = ({ id }) => {
       name: todo.name,
       id_todo: todo.id_todo,
       completed: event.target.checked,
-      id_groupList: todo.id_groupList
+      id_groupList: todo.id_groupList,
     };
     fetch(HOST_API + "/todo", {
       method: "PUT",
@@ -60,15 +60,12 @@ const List = ({ id }) => {
   };
   return (
     <div className="mt-3">
-      
-      <table className="table table-striped">
-        <thead className="table-dark">
-          <tr >
-            <th >ID</th>
-            <th >Tarea</th>
-            <th >¿Completado?</th>
-            <th ></th>
-            <th ></th>
+      <table className="table table-responsive table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tarea</th>
+            <th>¿Hecho?</th>
           </tr>
         </thead>
         <tbody>
@@ -80,15 +77,19 @@ const List = ({ id }) => {
               >
                 <td>{todo.id_todo}</td>
                 <td>{todo.name}</td>
-                <td><input
-                className="form-check-input"
+                <td>
+                  <input
+                    className="form-check-input"
                     type="checkbox"
                     defaultChecked={todo.completed}
                     onChange={(event) => onChange(event, todo)}
                   ></input>
                 </td>
                 <td>
-                  <button className="btn btn-dark" onClick={() => onDelete(todo.id_todo)}>
+                  <button
+                    className="btn btn-dark btn-sm"
+                    onClick={() => onDelete(todo.id_todo)}
+                  >
                     Eliminar
                   </button>
                 </td>
@@ -96,7 +97,7 @@ const List = ({ id }) => {
                   <button
                     disabled={btnTurn(todo.completed)}
                     onClick={() => onEdit(todo)}
-                    className="btn btn-primary"
+                    className="btn btn-primary btn-sm"
                   >
                     Editar
                   </button>

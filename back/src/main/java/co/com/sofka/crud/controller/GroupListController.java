@@ -15,27 +15,27 @@ public class GroupListController {
 
     @CrossOrigin
     @GetMapping(value = "/groupLists")
-    public Iterable<GroupList> list(){
+    public Iterable<GroupList> list() {
         return service.list();
     }
 
     @PostMapping(value = "/groupList")
-    public GroupList save(@RequestBody GroupList todo){
+    public GroupList save(@RequestBody GroupList todo) {
         return service.save(todo);
     }
 
     @PutMapping(value = "/groupList")
-    public GroupList update(@RequestBody GroupList todo){
+    public GroupList update(@RequestBody GroupList todo) {
         return service.save(todo);
     }
 
     @DeleteMapping(value = "/{id}/groupList")
-    public void delete(@PathVariable("id") Long id){
+    public void delete(@PathVariable("id") Long id) {
         service.delete(get(id));
     }
 
     @GetMapping(value = "/{id}/groupList")
-    public Long get(@PathVariable("id") Long id){
+    public Long get(@PathVariable("id") Long id) {
         return service.get(id).getId_groupList();
     }
 }
