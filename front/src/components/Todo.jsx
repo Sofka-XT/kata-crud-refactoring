@@ -12,8 +12,8 @@ function Todo() {
       
 
     
-<FormGroupList/>
 <FormGroup/>
+<FormGroupList/>
       </StoreProvider>
     );
   }

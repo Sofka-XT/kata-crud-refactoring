@@ -7,8 +7,7 @@ import {HOST_API} from "../common/HOST_API"
 import {Store} from "../common/Store"
 
 
-const Form = ({id_groupList}) => {
-    
+const Form = ({id}) => {
     const formRef = useRef(null);
     const {
       dispatch,
@@ -22,11 +21,12 @@ const Form = ({id_groupList}) => {
   
       const request = {
         name: state.name,
-        id: null,
+        id_todo: null,
         completed: false,
-        id_groupList: id_groupList
+        id_groupList: id.id_groupList
       };
-  
+
+      console.log(request)
       fetch(HOST_API + "/todo", {
         method: "POST",
         body: JSON.stringify(request),

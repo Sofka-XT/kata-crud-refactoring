@@ -7,7 +7,7 @@ import  List   from './List';
 const FormGroupList = () => {
     const { dispatch, state: { groupList } } = useContext(Store);
     const lista = groupList.list;
-
+console.log(groupList)
     useEffect(() => {
         fetch(HOST_API + "/groupLists")
           .then(response => response.json())
@@ -16,15 +16,14 @@ const FormGroupList = () => {
             dispatch({ type: "update-groupList", list });
           });
     }, [dispatch]);
-  console.log(lista)
     return (
         lista.map((groupList) => {
             return (
-                <div key={groupList.id_groupList}>
+                <div>
                     <h2>{groupList.name}</h2>
                     <button>Eliminar</button>
-                    <Form id={groupList.id_groupList} />
-                    {/* <List id={groupList.id_groupList} listCategory={groupList.todos}/> */}
+                    <Form id={groupList} />
+                    <List id={groupList} />
                 </div>
             )
         })

@@ -6,13 +6,18 @@ import {HOST_API} from "../common/HOST_API"
 import {Store} from "../common/Store"
 
 
-const List = () => {
+const List = ({id}) => {
+    
     const {
       dispatch,
       state: { todo },
     } = useContext(Store);
+    console.log(todo.list)
     const currentList = todo.list;
   
+const toShow = currentList.filter(e => e.id_groupList === id.id_groupList)
+console.log(toShow)
+
     useEffect(() => {
       fetch(HOST_API + "/todos")
         .then((response) => response.json())
@@ -21,12 +26,12 @@ const List = () => {
           dispatch({ type: "update-list", list });
         });
     }, [dispatch]);
-    console.log(currentList)
-    const onDelete = (id) => {
-      fetch(HOST_API + "/" + id + "/todo", {
+    
+    const onDelete = (id_todo) => {
+      fetch(HOST_API + "/" + id_todo + "/todo", {
         method: "DELETE",
       }).then((list) => {
-        dispatch({ type: "delete-item", id });
+        dispatch({ type: "delete-item", id_todo });
       });
     };
   
@@ -37,7 +42,7 @@ const List = () => {
     const onChange = (event, todo) => {
       const request = {
         name: todo.name,
-        id: todo.id,
+        id_todo: todo.id_todo,
         completed: event.target.checked,
       };
       fetch(HOST_API + "/todo", {
@@ -70,10 +75,11 @@ const btnTurn = (param) => param? true : false;
             </tr>
           </thead>
           <tbody>
-            {currentList.map((todo) => {
+              
+            {toShow.map((todo) => {
               return (
-                <tr key={todo.id} style={todo.completed ? decorationDone : {}}>
-                  <td>{todo.id}</td>
+                <tr key={todo.id_todo} style={todo.completed ? decorationDone : {}}>
+                  <td>{todo.id_todo}</td>
                   <td>{todo.name}</td>
                   <td>
                     <input
@@ -83,7 +89,7 @@ const btnTurn = (param) => param? true : false;
                     ></input>
                   </td>
                   <td>
-                    <button onClick={() => onDelete(todo.id)}>Eliminar</button>
+                    <button onClick={() => onDelete(todo.id_todo)}>Eliminar</button>
                   </td>
                   <td>
                     <button disabled={btnTurn(todo.completed)} onClick={() => onEdit(todo)}>Editar</button>

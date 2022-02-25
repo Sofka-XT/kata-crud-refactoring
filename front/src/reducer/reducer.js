@@ -3,7 +3,7 @@ function reducer(state, action) {
       case "update-item":
         const todoUpItem = state.todo;
         const listUpdateEdit = todoUpItem.list.map((item) => {
-          if (item.id === action.item.id) {
+          if (item.id_todo === action.item.id_todo) {
             return action.item;
           }
           return item;
@@ -14,7 +14,7 @@ function reducer(state, action) {
       case "delete-item":
         const todoUpDelete = state.todo;
         const listUpdate = todoUpDelete.list.filter((item) => {
-          return item.id !== action.id;
+          return item.id_todo !== action.id_todo;
         });
         todoUpDelete.list = listUpdate;
         return { ...state, todo: todoUpDelete };

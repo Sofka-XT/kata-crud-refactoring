@@ -4,7 +4,7 @@ import java.util.List;
 
 public class GroupListDTO {
 
-    private Long id;
+    private Long id_groupList;
     private String name;
     private List<TodoDTO> todos;
 
@@ -16,12 +16,12 @@ public class GroupListDTO {
         this.todos = todos;
     }
 
-    public Long getId() {
-        return id;
+    public Long getId_groupList() {
+        return id_groupList;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId_groupList(Long id_groupList) {
+        this.id_groupList = id_groupList;
     }
 
     public String getName() {
