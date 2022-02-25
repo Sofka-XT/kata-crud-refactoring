@@ -16,6 +16,8 @@ const initialState = {
 };
 const Store = createContext(initialState);
 
+
+
 const Form = () => {
   const formRef = useRef(null);
   const {
@@ -223,10 +225,23 @@ const StoreProvider = ({ children }) => {
 };
 
 function App() {
+  const urlApi = "http://localhost:8080/api"
+  const [ToDos, setToDos] = useState()
+  const fetchApi = async () => {
+    const response = await fetch(urlApi + "/todos")
+    const responseJSON = await response.json()
+    setToDos(responseJSON)
+  }
+  useEffect(() => {
+    fetchApi()
+  }, [])
+
+
+
   return (
     <StoreProvider>
       <ToDoForm />
-      <ToDoList />
+      <ToDoList ToDos={ToDos} />
       <h3>To-Do List</h3>
       <Form />
       <List />
