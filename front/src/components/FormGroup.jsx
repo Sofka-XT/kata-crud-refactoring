@@ -9,6 +9,8 @@ const FormGroup = () => {
   const [state, setState] = useState(item);
 
   const onAdd = (event) => {
+    
+
     event.preventDefault();
 
     const request = {
@@ -32,18 +34,34 @@ const FormGroup = () => {
   };
   
   return (
-    <div>
+    <div className='row' >
+      <p className="placeholder-glow">
+  <span className="placeholder col-12"></span>
+</p>
+
+<div className='col-2'></div>
+<div className='col -8'>
         <form ref={formRef}>
+        <div className="input-group mb-3">
             <input
                 type="text"
                 name="name"
                 placeholder="Lista TO-DO"
+                className="form-control"
                 onChange={(event) => {
                     setState({ ...state, name: event.target.value });
             }}>
             </input>
-            <button onClick={onAdd}>Agregar Nueva Lista de tareas:</button>
+            
+            <button onClick={onAdd} className="btn btn-outline-secondary">Agregar Nueva Lista de tareas:</button>
+            </div>
+            
             </form>
+            </div>
+            <div className='col-2'></div>
+            <p className="placeholder-glow">
+  <span className="placeholder col-12"></span>
+</p>
     </div>
   )
 };

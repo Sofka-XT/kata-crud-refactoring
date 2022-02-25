@@ -71,8 +71,13 @@ const Form = ({id}) => {
       
 
     return (
+      <div className="container mt-2">
+      <div className="row">
+        <div className="col mb-3">
       <form ref={formRef}>
+        <div className="input-group">
         <input
+        className="form-control"
           type="text"
           name="name"
           placeholder="¿Qué piensas hacer hoy?"
@@ -82,10 +87,17 @@ const Form = ({id}) => {
           }}
         ></input>
         <div>
-        {item.id && <button type="button" onClick={onEdit}>Actualizar</button>}
-        {!item.id && <button disabled={noName(state.name)} onClick={onAdd}>Crear</button>}
+        {item.id_todo && <button type="button" className="btn btn-secondary" onClick={onEdit}>Actualizar</button>}
+        {!item.id_todo && <button className="btn btn-secondary" disabled={noName(state.name)} onClick={onAdd}>Crear</button>}
+        </div>
         </div>
       </form>
+      </div>
+      <div className="col"></div>
+      
+      
+      </div>
+      </div>
     );
   };
 

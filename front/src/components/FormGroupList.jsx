@@ -33,11 +33,13 @@ const FormGroupList = () => {
     return (
       <Fragment key={groupList.id_groupList}>
         {/* los elementos como los div repetidos en iteracion, tienen que tener keys sino ERROR en consola. */}
-        <div id={groupList.id_groupList} key={groupList.id_groupList}>
+        <div className="row border border-dark m-3 bkGrey" id={groupList.id_groupList} key={groupList.id_groupList}>
+          <div className="col">
           <h2>{groupList.name}</h2>
-          <button onClick={() => onDelete(groupList.id_groupList)}>
-            Eliminar
+          <button className="btn btn-outline-danger" onClick={() => onDelete(groupList.id_groupList)}>
+            Eliminar Grupo
           </button>
+          </div>
           <Form id={groupList} />
           <List id={groupList} />
         </div>

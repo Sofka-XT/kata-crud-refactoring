@@ -59,13 +59,16 @@ const List = ({ id }) => {
     textDecoration: "line-through",
   };
   return (
-    <div>
-      <table className="table-secondary">
-        <thead>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Tarea</th>
-            <th scope="col">¿Completado?</th>
+    <div className="mt-3">
+      
+      <table className="table table-striped">
+        <thead className="table-dark">
+          <tr >
+            <th >ID</th>
+            <th >Tarea</th>
+            <th >¿Completado?</th>
+            <th ></th>
+            <th ></th>
           </tr>
         </thead>
         <tbody>
@@ -77,15 +80,15 @@ const List = ({ id }) => {
               >
                 <td>{todo.id_todo}</td>
                 <td>{todo.name}</td>
-                <td>
-                  <input
+                <td><input
+                className="form-check-input"
                     type="checkbox"
                     defaultChecked={todo.completed}
                     onChange={(event) => onChange(event, todo)}
                   ></input>
                 </td>
                 <td>
-                  <button onClick={() => onDelete(todo.id_todo)}>
+                  <button className="btn btn-dark" onClick={() => onDelete(todo.id_todo)}>
                     Eliminar
                   </button>
                 </td>
@@ -93,6 +96,7 @@ const List = ({ id }) => {
                   <button
                     disabled={btnTurn(todo.completed)}
                     onClick={() => onEdit(todo)}
+                    className="btn btn-primary"
                   >
                     Editar
                   </button>
