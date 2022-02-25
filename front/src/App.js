@@ -313,6 +313,7 @@ function App() {
 
   return (
     <StoreProvider>
+      <h3>To-Do List</h3>
 
       <ToDoForm
         crearToDo={crearToDo}
@@ -328,12 +329,9 @@ function App() {
         setToDoActual={setToDoActual}
       />
 
-      <h3>To-Do List</h3>
+      {/* <Form />
 
-      <Form />
-
-      <List />
-
+      <List /> */}
     </StoreProvider>
   );
 }
