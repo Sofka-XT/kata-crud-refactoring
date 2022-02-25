@@ -8,6 +8,7 @@ import React, {
 } from "react";
 
 import { ToDoForm } from "./components/ToDoForm";
+import { ToDoList } from "./components/ToDoList";
 
 const HOST_API = "http://localhost:8080/api";
 const initialState = {
@@ -225,6 +226,7 @@ function App() {
   return (
     <StoreProvider>
       <ToDoForm />
+      <ToDoList />
       <h3>To-Do List</h3>
       <Form />
       <List />
