@@ -24,7 +24,7 @@ const Form = ({id_groupList}) => {
         name: state.name,
         id: null,
         completed: false,
-        groupList: id_groupList
+        id_groupList: id_groupList
       };
   
       fetch(HOST_API + "/todo", {
@@ -49,7 +49,7 @@ const Form = ({id_groupList}) => {
         name: state.name,
         id: item.id,
         isCompleted: item.isCompleted,
-        groupList: item.groupList
+        id_groupList: item.id_groupList
       };
   
       fetch(HOST_API + "/todo", {

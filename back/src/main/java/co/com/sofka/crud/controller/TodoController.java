@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping("/api")
 public class TodoController {
 
     @Autowired
@@ -21,6 +21,7 @@ public class TodoController {
     @Autowired
     private Mapper mapper;
 
+    @CrossOrigin
     @GetMapping(value = "/todos")
     public Iterable<TodoDTO> list(){
 
@@ -40,7 +41,7 @@ public class TodoController {
     @PutMapping(value = "/todo")
     public TodoDTO update(@RequestBody TodoDTO todoDto){
         Todo todo = mapper.convertToEntity(todoDto);
-        if(todoDto.getId() != null){
+        if(todoDto.getId_todo() != null){
             Todo todoUpdate = service.update(todo);
             return mapper.convertToDto(todoUpdate);
         }

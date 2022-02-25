@@ -17,10 +17,11 @@ const List = () => {
       fetch(HOST_API + "/todos")
         .then((response) => response.json())
         .then((list) => {
+            console.log(list)
           dispatch({ type: "update-list", list });
         });
     }, [dispatch]);
-  
+    console.log(currentList)
     const onDelete = (id) => {
       fetch(HOST_API + "/" + id + "/todo", {
         method: "DELETE",

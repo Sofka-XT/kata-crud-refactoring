@@ -25,7 +25,7 @@ const FormGroup = () => {
     })
       .then(response => response.json())
       .then((groupList) => {
-        dispatch({ type: "add-item", item: groupList });
+        dispatch({ type: "add-groupList", item: groupList });
         setState({ name: "" });
         formRef.current.reset();
       });

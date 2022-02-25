@@ -12,6 +12,8 @@ public class GroupListController {
 
     @Autowired
     private GroupListService service;
+
+    @CrossOrigin
     @GetMapping(value = "/groupLists")
     public Iterable<GroupList> list(){
         return service.list();

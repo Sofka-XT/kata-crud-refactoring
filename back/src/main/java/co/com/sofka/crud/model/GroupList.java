@@ -10,7 +10,7 @@ public class GroupList {
     private Long id_groupList;
     private String name;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "groupList")
+    @JoinColumn(name = "id_groupList")
     private List<Todo> todos;
 
     public Long getId_groupList() {

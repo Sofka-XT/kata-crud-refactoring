@@ -30,6 +30,16 @@ function reducer(state, action) {
         const todoUp = state.todo.list;
         todoUp.push(action.item);
         return { ...state, todo: { list: todoUp, item: {} } };
+
+        case "add-groupList":
+      const groupList = state.groupList.list;
+      groupList.push(action.item);
+      return { ...state, groupList: { list: groupList, item: {} } };
+
+      case "update-groupList":
+        const groupLists = state.groupList;
+        groupLists.list = action.list;
+        return { ...state, groupList: groupLists };
       default:
         return state;
     }

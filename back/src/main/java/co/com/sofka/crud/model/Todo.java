@@ -13,14 +13,14 @@ public class Todo {
     private Long id_todo;
     private String name;
     private boolean completed;
-    private Long groupList;
+    private Long id_groupList;
 
-    public Long getGroupList() {
-        return groupList;
+    public Long getId_groupList() {
+        return id_groupList;
     }
 
-    public void setGroupList(Long groupList) {
-        this.groupList = groupList;
+    public void setId_groupList(Long id_groupList) {
+        this.id_groupList = id_groupList;
     }
 
     public boolean isCompleted() {
