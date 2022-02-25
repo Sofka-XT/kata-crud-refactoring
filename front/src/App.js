@@ -227,13 +227,16 @@ const StoreProvider = ({ children }) => {
 function App() {
   const urlApi = "http://localhost:8080/api"
   const [ToDos, setToDos] = useState()
-  const fetchApi = async () => {
-    const response = await fetch(urlApi + "/todos")
-    const responseJSON = await response.json()
-    setToDos(responseJSON)
+  const apiToDos = "/todos"
+  
+  const fetchApi = async (metodo) => {
+    const response = await fetch(urlApi + metodo)
+    return response
   }
   useEffect(() => {
-    fetchApi()
+    fetchApi(apiToDos)
+      .then((response) => response.json())
+      .then((items) => setToDos(items))
   }, [])
 
 
