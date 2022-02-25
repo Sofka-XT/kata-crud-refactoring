@@ -235,22 +235,65 @@ function App() {
       console.log(error)
     }
   }
-  
+
   useEffect(() => {
     fetchApi()
       .then((response) => response.json())
       .then((items) => setToDos(items))
   }, [])
 
+    const actualizarToDo = async (toDo) => {
+    try {
+      const response = await fetch(urlApi + "/todo", {
+        method: "PUT",
+        body: JSON.stringify(toDo),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
+      ToDos.map(element => (element.id === toDo.id ? toDo : element))
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const eliminarToDo = async (toDo) => {
+    try {
+      await fetch(urlApi + "/" + toDo.id + "/todo", {
+        method: "DELETE",
+        body: JSON.stringify(toDo),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      setToDos(ToDos.filter((element) => element.id !== toDo.id))
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <StoreProvider>
+
       <ToDoForm />
-      <ToDoList ToDos={ToDos} />
+
+      <ToDoList
+        ToDos={ToDos}
+        urlApi={urlApi}
+        actualizarToDo={actualizarToDo}
+        eliminarToDo={eliminarToDo}
+      />
+
       <h3>To-Do List</h3>
+
       <Form />
+
       <List />
+
     </StoreProvider>
   );
 }

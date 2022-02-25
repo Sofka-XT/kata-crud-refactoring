@@ -3,6 +3,20 @@ import React from 'react'
 export const ToDoList = (props) => {
   const ToDos = props.ToDos ? props.ToDos : []
 
+  const onChange = (event, toDo) => {
+    const request = {
+      name: toDo.name,
+      id: toDo.id,
+      completed: event.target.checked,
+    };
+
+    props.actualizarToDo(request);
+  };
+
+  const onClick = (item) => {
+    props.eliminarToDo(item);
+  };
+
     if (ToDos) {
       return (
         <div>
@@ -21,11 +35,11 @@ export const ToDoList = (props) => {
                 <td>{toDo.id}</td>
                 <td>{toDo.name}</td>
                 <td>
-                  <input type="checkbox" defaultChecked={toDo.completed} onChange={(event)=> console.log(event)}
+                  <input type="checkbox" defaultChecked={toDo.completed} onChange={(event) => onChange(event, toDo)}
                   ></input>
                 </td>
                 <td>
-                  <button onClick={() => {console.log("Eliminar")}}>Eliminar</button>
+                  <button onClick={() => onClick(toDo)}>Eliminar</button>
                 </td>
                 <td>
                   <button onClick={() => {console.log("Editar")}}>Editar</button>
