@@ -289,7 +289,9 @@ function App() {
           },
         });
 
-        ToDos.map(element => (element.id === toDo.id ? toDo : element))
+        setToDos(
+          ToDos.map((element) => (element.id === toDo.id ? toDo : element))
+        );
 
       } catch (error) {
         console.log(error);
