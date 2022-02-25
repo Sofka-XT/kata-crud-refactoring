@@ -18,6 +18,7 @@ export const ToDoForm = (props) => {
   return (
     <form ref={formRef}>
       <input
+        className='p-1'
         type="text"
         name="name"
         placeholder="¿Qué piensas hacer hoy?"
@@ -25,23 +26,16 @@ export const ToDoForm = (props) => {
       ></input>
       {props.ToDoActual && (
         <button
+          className="btn btn-success m-3"
           onClick={(event) =>
-            onClick(
-              event.preventDefault,
-              props.editarToDo,
-              props.ToDoActual
-            )
+            onClick(event.preventDefault, props.editarToDo, props.ToDoActual)
           }
         >Actualizar</button>
       )}
       {!props.ToDoActual && (
         <button
-          onClick={(event) =>
-            onClick(
-              event.preventDefault,
-              props.crearToDo
-            )
-          }
+          className="btn btn-success m-3"
+          onClick={(event) => onClick(event.preventDefault, props.crearToDo)}
         >Crear</button>
       )}
     </form>

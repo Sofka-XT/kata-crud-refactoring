@@ -318,20 +318,21 @@ function App() {
   return (
     <StoreProvider>
       <h3>To-Do List</h3>
+      <div className="" >
+        <ToDoForm
+          crearToDo={crearToDo}
+          ToDoActual={ToDoActual}
+          editarToDo={editarToDo}
+        />
 
-      <ToDoForm
-        crearToDo={crearToDo}
-        ToDoActual={ToDoActual}
-        editarToDo={editarToDo}
-      />
-
-      <ToDoList
-        ToDos={ToDos}
-        urlApi={urlApi}
-        actualizarToDo={actualizarToDo}
-        eliminarToDo={eliminarToDo}
-        setToDoActual={setToDoActual}
-      />
+        <ToDoList
+          ToDos={ToDos}
+          urlApi={urlApi}
+          actualizarToDo={actualizarToDo}
+          eliminarToDo={eliminarToDo}
+          setToDoActual={setToDoActual}
+        />
+      </div>
 
       {/* <Form />
 

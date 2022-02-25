@@ -23,39 +23,50 @@ export const ToDoList = (props) => {
     if (ToDos) {
       return (
         <div>
-          <table>
+          <table className="table table-borderless">
             <thead>
               <tr>
                 <td>ID</td>
                 <td>Tarea</td>
-                <td>¿Completado?</td>
+                <td className="text-center">¿Completado?</td>
               </tr>
             </thead>
             <tbody>
               {ToDos.map((toDo) => {
-              return (
-                <tr key={toDo.id} style={toDo.completed ? decorationDone : {}}>
-                  <td>{toDo.id}</td>
-                  <td>{toDo.name}</td>
-                  <td>
-                    <input
-                      type="checkbox"
-                      defaultChecked={toDo.completed}
-                      onChange={(event) => onChange(event, toDo)}
-                    ></input>
-                  </td>
-                  <td>
-                    <button onClick={() => onClick(toDo, props.eliminarToDo)}>
-                      Eliminar
-                    </button>
-                  </td>
-                  <td>
-                    <button onClick={() => onClick(toDo, props.setToDoActual)}>
-                      Editar
-                    </button>
-                  </td>
-                </tr>
-              );
+                return (
+                  <tr
+                    className="align-middle"
+                    key={toDo.id}
+                    style={toDo.completed ? decorationDone : {}}
+                  >
+                    <td>{toDo.id}</td>
+                    <td>{toDo.name}</td>
+                    <td className="form-check form-switch d-flex align-items-center justify-content-center">
+                      <input
+                        className="form-check-input align-self-center"
+                        type="checkbox"
+                        defaultChecked={toDo.completed}
+                        onChange={(event) => onChange(event, toDo)}
+                      ></input>
+                    </td>
+                    <td>
+                      <button
+                        className="btn btn-danger"
+                        onClick={() => onClick(toDo, props.eliminarToDo)}
+                      >
+                        Eliminar
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                        className="btn btn-primary"
+                        onClick={() => onClick(toDo, props.setToDoActual)}
+                      >
+                        Editar
+                      </button>
+                    </td>
+                  </tr>
+                );
               })}
             </tbody>
           </table>
