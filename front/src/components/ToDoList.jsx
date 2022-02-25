@@ -2,6 +2,9 @@ import React from 'react'
 
 export const ToDoList = (props) => {
   const ToDos = props.ToDos ? props.ToDos : []
+  const decorationDone = {
+    textDecoration: "line-through",
+  };
 
   const onChange = (event, toDo) => {
     const request = {
@@ -31,20 +34,27 @@ export const ToDoList = (props) => {
             <tbody>
               {ToDos.map((toDo) => {
               return (
-              <tr key={toDo.id}>
-                <td>{toDo.id}</td>
-                <td>{toDo.name}</td>
-                <td>
-                  <input type="checkbox" defaultChecked={toDo.completed} onChange={(event) => onChange(event, toDo)}
-                  ></input>
-                </td>
-                <td>
-                  <button onClick={() => onClick(toDo, props.eliminarToDo)}>Eliminar</button>
-                </td>
-                <td>
-                  <button onClick={() => onClick(toDo, props.setToDoActual)}>Editar</button>
-                </td>
-              </tr>
+                <tr key={toDo.id} style={toDo.completed ? decorationDone : {}}>
+                  <td>{toDo.id}</td>
+                  <td>{toDo.name}</td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      defaultChecked={toDo.completed}
+                      onChange={(event) => onChange(event, toDo)}
+                    ></input>
+                  </td>
+                  <td>
+                    <button onClick={() => onClick(toDo, props.eliminarToDo)}>
+                      Eliminar
+                    </button>
+                  </td>
+                  <td>
+                    <button onClick={() => onClick(toDo, props.setToDoActual)}>
+                      Editar
+                    </button>
+                  </td>
+                </tr>
               );
               })}
             </tbody>
