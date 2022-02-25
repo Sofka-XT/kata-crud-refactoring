@@ -15,14 +15,6 @@ public class Mapper {
     public ModelMapper modelMapper() {
         return new ModelMapper();
     }
-    public TodoDTO convertToDto(Todo todo){
-        TodoDTO todoDto = mapper.map(todo, TodoDTO.class);
-        todoDto.setId_todo(todo.getId_todo());
-        todoDto.setName(todo.getName());
-        todoDto.setCompleted(todo.isCompleted());
-        todoDto.setId_groupList(todo.getId_groupList());
-        return todoDto;
-    }
 
     public Todo convertToEntity(TodoDTO todoDto){
         Todo todo = mapper.map(todoDto, Todo.class);
@@ -35,4 +27,14 @@ public class Mapper {
         }
         return todo;
     }
+
+    public TodoDTO convertToDto(Todo todo){
+        TodoDTO todoDto = mapper.map(todo, TodoDTO.class);
+        todoDto.setId_todo(todo.getId_todo());
+        todoDto.setName(todo.getName());
+        todoDto.setCompleted(todo.isCompleted());
+        todoDto.setId_groupList(todo.getId_groupList());
+        return todoDto;
+    }
+
 }

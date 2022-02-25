@@ -26,7 +26,6 @@ const Form = ({id}) => {
         id_groupList: id.id_groupList
       };
 
-      console.log(request)
       fetch(HOST_API + "/todo", {
         method: "POST",
         body: JSON.stringify(request),

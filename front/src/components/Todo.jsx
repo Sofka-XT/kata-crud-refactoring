@@ -9,9 +9,6 @@ import FormGroupList from './FormGroupList';
 function Todo() {
     return (
       <StoreProvider>
-      
-
-    
 <FormGroup/>
 <FormGroupList/>
       </StoreProvider>
