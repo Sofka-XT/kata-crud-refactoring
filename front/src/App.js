@@ -227,6 +227,7 @@ const StoreProvider = ({ children }) => {
 function App() {
   const urlApi = "http://localhost:8080/api"
   const [ToDos, setToDos] = useState()
+  const [ToDoActual, setToDoActual] = useState();
 
   const fetchApi = async () => {
     try {
@@ -260,21 +261,38 @@ function App() {
     };
 
     const actualizarToDo = async (toDo) => {
-    try {
-      const response = await fetch(urlApi + "/todo", {
-        method: "PUT",
-        body: JSON.stringify(toDo),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      try {
+        const response = await fetch(urlApi + "/todo", {
+          method: "PUT",
+          body: JSON.stringify(toDo),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
-      ToDos.map(element => (element.id === toDo.id ? toDo : element))
+        ToDos.map(element => (element.id === toDo.id ? toDo : element))
 
-    } catch (error) {
-      console.log(error);
-    }
-  };
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    const editarToDo = async (toDo) => {
+      try {
+        const response = await fetch(urlApi + "/todo", {
+          method: "PUT",
+          body: JSON.stringify(toDo),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        ToDos.map(element => (element.id === toDo.id ? toDo : element))
+
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
   const eliminarToDo = async (toDo) => {
     try {
@@ -298,6 +316,8 @@ function App() {
 
       <ToDoForm
         crearToDo={crearToDo}
+        ToDoActual={ToDoActual}
+        editarToDo={editarToDo}
       />
 
       <ToDoList
@@ -305,6 +325,7 @@ function App() {
         urlApi={urlApi}
         actualizarToDo={actualizarToDo}
         eliminarToDo={eliminarToDo}
+        setToDoActual={setToDoActual}
       />
 
       <h3>To-Do List</h3>

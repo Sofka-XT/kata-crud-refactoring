@@ -13,8 +13,8 @@ export const ToDoList = (props) => {
     props.actualizarToDo(request);
   };
 
-  const onClick = (item) => {
-    props.eliminarToDo(item);
+  const onClick = (item, accion) => {
+    accion(item);
   };
 
     if (ToDos) {
@@ -39,10 +39,10 @@ export const ToDoList = (props) => {
                   ></input>
                 </td>
                 <td>
-                  <button onClick={() => onClick(toDo)}>Eliminar</button>
+                  <button onClick={() => onClick(toDo, props.eliminarToDo)}>Eliminar</button>
                 </td>
                 <td>
-                  <button onClick={() => {console.log("Editar")}}>Editar</button>
+                  <button onClick={() => onClick(toDo, props.setToDoActual)}>Editar</button>
                 </td>
               </tr>
               );
