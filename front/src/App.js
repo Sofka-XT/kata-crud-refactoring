@@ -245,14 +245,14 @@ function App() {
 
     const crearToDo = async (toDo) => {
       try {
-        const response = await fetch(urlApi + "/todo", {
+        await fetch(urlApi + "/todo", {
           method: "POST",
           body: JSON.stringify(toDo),
           headers: {
             "Content-Type": "application/json",
           },
         })
-          .then((res) => res.json())
+          .then((response) => response.json())
           .then((item) => setToDos([...ToDos, item]));
 
       } catch (error) {
@@ -262,7 +262,7 @@ function App() {
 
     const actualizarToDo = async (toDo) => {
       try {
-        const response = await fetch(urlApi + "/todo", {
+        await fetch(urlApi + "/todo", {
           method: "PUT",
           body: JSON.stringify(toDo),
           headers: {
