@@ -292,7 +292,7 @@ function App() {
         setToDos(
           ToDos.map((element) => (element.id === toDo.id ? toDo : element))
         );
-        setToDoActual([])
+        setToDoActual(undefined)
 
       } catch (error) {
         console.log(error);
