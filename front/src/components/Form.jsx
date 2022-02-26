@@ -74,9 +74,9 @@ const Form = ({ id }) => {
     name === undefined || name.length === 0 ? true : false;
 
   return (
-    <div className="container mt-2">
-      <div className="row">
-        <div className="col mb-3">
+    <div className="mt-2">
+     
+        <div className="m-3">
           <form ref={formRef}>
             <div className="input-group">
               <input
@@ -113,9 +113,7 @@ const Form = ({ id }) => {
             </div>
           </form>
         </div>
-        <div className="col"></div>
       </div>
-    </div>
   );
 };
 

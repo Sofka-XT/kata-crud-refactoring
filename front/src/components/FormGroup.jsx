@@ -20,10 +20,22 @@ const FormGroup = () => {
     };
   
     if (state.name === "" || state.name === undefined) {
-      alert("Tiene que ingresar nombre de Lista")
+      let putAlert = document.getElementById('putAlert');
+      putAlert.innerHTML=`<div class="alert alert-warning" role="alert">
+      <h5>Tiene que ingresar nombre de Lista!!!!</h5>
+    </div>`
+    setTimeout(() => {
+      putAlert.innerHTML='';
+    }, 3000);
     } else {
       if (state.name.trim().length === 0) {
-       alert("Tiene que ingresar nombre de Lista")
+        let putAlert = document.getElementById('putAlert');
+        putAlert.innerHTML=`<div class="alert alert-warning" role="alert">
+        <h5>Tiene que ingresar nombre de Lista!!!!</h5>
+      </div>`
+      setTimeout(() => {
+        putAlert.innerHTML='';
+      }, 3000);
       } else {
         fetch(HOST_API + "/groupList", {
           method: "POST",
@@ -54,15 +66,15 @@ const FormGroup = () => {
             <input
               type="text"
               name="name"
-              placeholder="Lista TO-DO"
+              placeholder="Nueva Lista TO-DO"
               className="form-control"
               onChange={(event) => {
                 setState({ ...state, name: event.target.value });
               }}
             ></input>
 
-            <button onClick={onAdd} className="btn btn-outline-secondary">
-              Agregar Nueva Lista de tareas:
+            <button onClick={onAdd} className="btn btn-secondary">
+              <b>Agregar Nueva Lista</b>
             </button>
           </div>
         </form>

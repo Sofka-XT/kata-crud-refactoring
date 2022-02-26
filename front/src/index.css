@@ -17,3 +17,6 @@ code {
   background-color: rgba(143, 143, 143, 0.144);
 }
 
+.minSize{
+  size: 500px;
+}

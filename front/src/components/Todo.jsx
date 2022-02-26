@@ -8,11 +8,11 @@ function Todo() {
     return (
       <StoreProvider>
 <FormGroup/>
-<div className='container'>
+<div id="putAlert"></div>
   <div className='row' id='rowD'>
   <FormGroupList/>
   </div>
-</div>
+
 
       </StoreProvider>
     );
