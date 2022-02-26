@@ -17,15 +17,21 @@ public class TodoController {
     
     @PostMapping(value = "api/todo")
     public Todo save(@RequestBody Todo todo){
-        return service.save(todo);
+        if (todo.getName().length() > 2 && todo.getName().length() <= 40) {
+            return service.save(todo);
+        }
+        throw new RuntimeException("No se pudo crear, nombre debe tener entre 3 y 40 caracteres");
     }
 
     @PutMapping(value = "api/todo")
     public Todo update(@RequestBody Todo todo){
-        if(todo.getId() != null){
-            return service.save(todo);
+        if (todo.getName().length() > 2 && todo.getName().length() <= 40) {
+            if(todo.getId() != null){
+                return service.save(todo);
+            }
+            throw new RuntimeException("No existe el id para actualziar");
         }
-        throw new RuntimeException("No existe el id para actualziar");
+        throw new RuntimeException("No se pudo crear, nombre debe tener entre 3 y 40 caracteres");
     }
 
     @DeleteMapping(value = "api/{id}/todo")
