@@ -20,20 +20,30 @@ const Form = ({ id }) => {
       completed: false,
       id_groupList: id.id_groupList,
     };
-
-    fetch(HOST_API + "/todo", {
-      method: "POST",
-      body: JSON.stringify(request),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((todo) => {
-        dispatch({ type: "add-item", item: todo });
-        setState({ name: "" });
-        formRef.current.reset();
-      });
+    //verif long maxima 20 caracteres.
+    if (state.name.length > 20) {
+      let putAlert = document.getElementById("putAlert");
+      putAlert.innerHTML = `<div class="alert alert-warning" role="alert">
+    <h5>Longitud maxima 20 caracteres!!!</h5>
+  </div>`;
+      setTimeout(() => {
+        putAlert.innerHTML = "";
+      }, 3000);
+    } else {
+      fetch(HOST_API + "/todo", {
+        method: "POST",
+        body: JSON.stringify(request),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((todo) => {
+          dispatch({ type: "add-item", item: todo });
+          setState({ name: "" });
+          formRef.current.reset();
+        });
+    }
   };
 
   const onEdit = (event) => {
@@ -50,7 +60,21 @@ const Form = ({ id }) => {
       alert("Tiene que ingresar nombre de Lista");
     } else {
       if (state.name.trim().length === 0) {
-        alert("Tiene que ingresar nombre de Lista");
+        let putAlert = document.getElementById("putAlert");
+        putAlert.innerHTML = `<div class="alert alert-warning" role="alert">
+      <h5>Ingrese tarea, Longitud maxima 20 caracteres!!!</h5>
+    </div>`;
+        setTimeout(() => {
+          putAlert.innerHTML = "";
+        }, 3000);
+      } else if (state.name.length > 20) {
+        let putAlert = document.getElementById("putAlert");
+        putAlert.innerHTML = `<div class="alert alert-warning" role="alert">
+      <h5>Longitud maxima 20 caracteres!!!</h5>
+    </div>`;
+        setTimeout(() => {
+          putAlert.innerHTML = "";
+        }, 3000);
       } else {
         fetch(HOST_API + "/todo", {
           method: "PUT",
@@ -75,45 +99,44 @@ const Form = ({ id }) => {
 
   return (
     <div className="mt-2">
-     
-        <div className="m-3">
-          <form ref={formRef}>
-            <div className="input-group">
-              <input
-                className="form-control"
-                type="text"
-                name="name"
-                placeholder="¿Qué piensas hacer hoy?"
-                onChange={(event) => {
-                  setState({ ...state, name: event.target.value });
-                }}
-                defaultValue={item.name}
-              ></input>
-              <div>
-                {item.id_todo && (
-                  <button
+      <div className="m-3">
+        <form ref={formRef}>
+          <div className="input-group">
+            <input
+              className="form-control"
+              type="text"
+              name="name"
+              placeholder="¿Qué piensas hacer hoy?"
+              onChange={(event) => {
+                setState({ ...state, name: event.target.value });
+              }}
+              defaultValue={item.name}
+            ></input>
+            <div>
+              {item.id_todo && (
+                <button
                   disabled={noName(state.name)}
-                    type="button"
-                    className="btn btn-secondary"
-                    onClick={onEdit}
-                  >
-                    Actualizar
-                  </button>
-                )}
-                {!item.id_todo && (
-                  <button
-                    className="btn btn-secondary"
-                    disabled={noName(state.name)}
-                    onClick={onAdd}
-                  >
-                    Crear
-                  </button>
-                )}
-              </div>
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={onEdit}
+                >
+                  Actualizar
+                </button>
+              )}
+              {!item.id_todo && (
+                <button
+                  className="btn btn-secondary"
+                  disabled={noName(state.name)}
+                  onClick={onAdd}
+                >
+                  Crear
+                </button>
+              )}
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
+    </div>
   );
 };
 

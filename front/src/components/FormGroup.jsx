@@ -18,24 +18,24 @@ const FormGroup = () => {
       name: state.name,
       id_groupList: null,
     };
-  
+
     if (state.name === "" || state.name === undefined) {
-      let putAlert = document.getElementById('putAlert');
-      putAlert.innerHTML=`<div class="alert alert-warning" role="alert">
+      let putAlert = document.getElementById("putAlert");
+      putAlert.innerHTML = `<div class="alert alert-warning" role="alert">
       <h5>Tiene que ingresar nombre de Lista!!!!</h5>
-    </div>`
-    setTimeout(() => {
-      putAlert.innerHTML='';
-    }, 3000);
+    </div>`;
+      setTimeout(() => {
+        putAlert.innerHTML = "";
+      }, 3000);
     } else {
       if (state.name.trim().length === 0) {
-        let putAlert = document.getElementById('putAlert');
-        putAlert.innerHTML=`<div class="alert alert-warning" role="alert">
+        let putAlert = document.getElementById("putAlert");
+        putAlert.innerHTML = `<div class="alert alert-warning" role="alert">
         <h5>Tiene que ingresar nombre de Lista!!!!</h5>
-      </div>`
-      setTimeout(() => {
-        putAlert.innerHTML='';
-      }, 3000);
+      </div>`;
+        setTimeout(() => {
+          putAlert.innerHTML = "";
+        }, 3000);
       } else {
         fetch(HOST_API + "/groupList", {
           method: "POST",

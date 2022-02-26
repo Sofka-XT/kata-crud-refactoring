@@ -3,6 +3,7 @@ package co.com.sofka.crud.controller;
 import co.com.sofka.crud.model.GroupList;
 import co.com.sofka.crud.service.GroupListService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -20,13 +21,14 @@ public class GroupListController {
     }
 
     @PostMapping(value = "/groupList")
-    public GroupList save(@RequestBody GroupList todo) {
-        return service.save(todo);
+    public GroupList save(@RequestBody GroupList groupList) {
+
+        return service.save(groupList);
     }
 
     @PutMapping(value = "/groupList")
-    public GroupList update(@RequestBody GroupList todo) {
-        return service.save(todo);
+    public GroupList update(@RequestBody GroupList groupList) {
+        return service.save(groupList);
     }
 
     @DeleteMapping(value = "/{id}/groupList")

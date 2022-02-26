@@ -59,7 +59,7 @@ const List = ({ id }) => {
     textDecoration: "line-through",
   };
   return (
-    <div className="m-3">
+    <div className="m-2">
       <table className="table table-striped table-hover">
         <thead>
           <tr>
@@ -86,22 +86,24 @@ const List = ({ id }) => {
                   ></input>
                 </td>
                 <td>
-                  <div className="m-1">                  <button
-                    className="btn btn-dark btn-sm"
-                    onClick={() => onDelete(todo.id_todo)}
-                  >
-                    Eliminar
-                  </button>
+                  <div className="m-1">
+                    {" "}
+                    <button
+                      className="btn btn-dark btn-sm"
+                      onClick={() => onDelete(todo.id_todo)}
+                    >
+                      Eliminar
+                    </button>
                   </div>
 
                   <div className="m-1">
-                  <button
-                    disabled={btnTurn(todo.completed)}
-                    onClick={() => onEdit(todo)}
-                    className="btn btn-primary btn-sm"
-                  >
-                    Editar
-                  </button>
+                    <button
+                      disabled={btnTurn(todo.completed)}
+                      onClick={() => onEdit(todo)}
+                      className="btn btn-primary btn-sm"
+                    >
+                      Editar
+                    </button>
                   </div>
                 </td>
               </tr>

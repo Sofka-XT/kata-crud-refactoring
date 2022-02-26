@@ -36,8 +36,8 @@ const FormGroupList = () => {
         {/* los elementos como los div repetidos en iteracion, tienen que tener keys sino ERROR en consola. */}
         <div className="col-md-6 mb-2" id={groupList.id_groupList}>
           <div className="card custom-card">
-            <div className="m-3 bkGrey" key={groupList.id_groupList}>
-              <div className="m-3">
+            <div className="m-2 rounded bkGrey" key={groupList.id_groupList}>
+              <div className="m-2">
                 <h2>{groupList.name}</h2>
                 <button
                   className="btn btn-outline-danger"

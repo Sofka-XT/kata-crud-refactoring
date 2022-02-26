@@ -1,6 +1,7 @@
 package co.com.sofka.crud.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -8,6 +9,9 @@ public class GroupList {
     @Id
     @GeneratedValue
     private Long id_groupList;
+
+
+    /*@Size(min = 4, max = 20)*/
     private String name;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "id_groupList")
