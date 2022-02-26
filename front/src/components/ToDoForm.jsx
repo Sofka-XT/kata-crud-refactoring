@@ -1,14 +1,13 @@
-import React, {useRef} from 'react';
+import React, { useRef } from "react";
 
 export const ToDoForm = (props) => {
-  const formRef = useRef(null)
+  const formRef = useRef(null);
 
   const handleSubmit = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     const string = formRef.current[0].value;
 
     if (string.length > 2) {
-
       const request = {
         name: string,
         id: props.ToDoActual ? props.ToDoActual.id : null,
@@ -18,11 +17,9 @@ export const ToDoForm = (props) => {
       props.ToDoActual ? props.editarToDo(request) : props.crearToDo(request);
       formRef.current.reset();
     } else {
-      alert("El nombre es muy corto")
+      alert("El nombre es muy corto");
     }
-
   };
-
 
   return (
     <form ref={formRef} onSubmit={handleSubmit}>
@@ -39,4 +36,4 @@ export const ToDoForm = (props) => {
       </button>
     </form>
   );
-}
+};
