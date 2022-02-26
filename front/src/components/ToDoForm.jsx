@@ -16,6 +16,8 @@ export const ToDoForm = (props) => {
 
       props.ToDoActual ? props.editarToDo(request) : props.crearToDo(request);
       formRef.current.reset();
+    } else if (string.length > 40) {
+      alert("El nombre es muy largo");
     } else {
       alert("El nombre es muy corto");
     }
