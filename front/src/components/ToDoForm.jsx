@@ -3,41 +3,31 @@ import React, {useRef} from 'react';
 export const ToDoForm = (props) => {
   const formRef = useRef(null)
 
-  const onClick = (event, accion, toDo) => {
+  const handleSubmit = (event) => {
+    event.preventDefault()
     const request = {
       name: formRef.current[0].value,
-      id: toDo ? toDo.id : null,
-      completed: toDo ? toDo.completed : false,
+      id: props.ToDoActual ? props.ToDoActual.id : null,
+      completed: props.ToDoActual ? props.ToDoActual.completed : false,
     };
-
-    accion(request);
-    formRef.current.reset();
+    props.ToDoActual ? props.editarToDo(request) : props.crearToDo(request)
+    formRef.current.reset()
   };
 
 
   return (
-    <form ref={formRef}>
+    <form ref={formRef} onSubmit={handleSubmit}>
       <input
-        className='p-1'
+        className="p-1"
         type="text"
         name="name"
         placeholder="¿Qué piensas hacer hoy?"
         defaultValue={props.ToDoActual ? props.ToDoActual.name : ""}
+        required
       ></input>
-      {props.ToDoActual && (
-        <button
-          className="btn btn-success m-3"
-          onClick={(event) =>
-            onClick(event.preventDefault, props.editarToDo, props.ToDoActual)
-          }
-        >Actualizar</button>
-      )}
-      {!props.ToDoActual && (
-        <button
-          className="btn btn-success m-3"
-          onClick={(event) => onClick(event.preventDefault, props.crearToDo)}
-        >Crear</button>
-      )}
+      <button type="submit" className="btn btn-success m-3">
+        {props.ToDoActual ? "Actualizar" : "Crear"}
+      </button>
     </form>
   );
 }

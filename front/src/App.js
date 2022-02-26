@@ -251,9 +251,9 @@ function App() {
           headers: {
             "Content-Type": "application/json",
           },
-        });
-
-        setToDos(...ToDos, toDo)
+        })
+          .then((res) => res.json())
+          .then((item) => setToDos([...ToDos, item]));
 
       } catch (error) {
         console.log(error);
