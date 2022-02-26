@@ -5,13 +5,22 @@ export const ToDoForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    const request = {
-      name: formRef.current[0].value,
-      id: props.ToDoActual ? props.ToDoActual.id : null,
-      completed: props.ToDoActual ? props.ToDoActual.completed : false,
-    };
-    props.ToDoActual ? props.editarToDo(request) : props.crearToDo(request)
-    formRef.current.reset()
+    const string = formRef.current[0].value;
+
+    if (string.length > 2) {
+
+      const request = {
+        name: string,
+        id: props.ToDoActual ? props.ToDoActual.id : null,
+        completed: props.ToDoActual ? props.ToDoActual.completed : false,
+      };
+
+      props.ToDoActual ? props.editarToDo(request) : props.crearToDo(request);
+      formRef.current.reset();
+    } else {
+      alert("El nombre es muy corto")
+    }
+
   };
 
 
