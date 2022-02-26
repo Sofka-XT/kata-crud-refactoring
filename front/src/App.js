@@ -281,7 +281,7 @@ function App() {
 
     const editarToDo = async (toDo) => {
       try {
-        const response = await fetch(urlApi + "/todo", {
+        await fetch(urlApi + "/todo", {
           method: "PUT",
           body: JSON.stringify(toDo),
           headers: {
@@ -292,6 +292,7 @@ function App() {
         setToDos(
           ToDos.map((element) => (element.id === toDo.id ? toDo : element))
         );
+        setToDoActual([])
 
       } catch (error) {
         console.log(error);
