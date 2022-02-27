@@ -9,15 +9,15 @@ public class Todo {
     private Long id;
     private String name;
     private boolean completed;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="fk_toDoList")
-    private ToDoList toDoList;
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name="fk_toDoList")
+    private Long toDoList;
 
-    public ToDoList getToDoList() {
+    public Long getToDoList() {
         return toDoList;
     }
 
-    public void setToDoList(ToDoList toDoList) {
+    public void setToDoList(Long toDoList) {
         this.toDoList = toDoList;
     }
 

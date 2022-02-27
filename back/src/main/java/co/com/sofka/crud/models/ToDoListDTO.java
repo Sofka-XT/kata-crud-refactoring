@@ -5,8 +5,7 @@ import java.util.List;
 
 public class ToDoListDTO implements Serializable {
     private Long id;
-    private Integer listId;
-    private String listName;
+    private String name;
     private List todos;
 
     public Long getId() {
@@ -17,20 +16,12 @@ public class ToDoListDTO implements Serializable {
         this.id = id;
     }
 
-    public Integer getListId() {
-        return listId;
+    public String getName() {
+        return name;
     }
 
-    public void setListId(Integer listId) {
-        this.listId = listId;
-    }
-
-    public String getListName() {
-        return listName;
-    }
-
-    public void setListName(String listName) {
-        this.listName = listName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List getTodos() {
