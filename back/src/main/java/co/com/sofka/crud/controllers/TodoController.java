@@ -5,6 +5,8 @@ import co.com.sofka.crud.models.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 public class TodoController {
@@ -44,6 +46,11 @@ public class TodoController {
     @GetMapping(value = "api/{id}/todo")
     public Todo get(@PathVariable("id") Long id){
         return service.get(id);
+    }
+
+    @GetMapping(value = "api/{id}/todos")
+    public List<Todo> getByListId(@PathVariable("id") Integer id){
+        return service.getListId(id);
     }
 
 }

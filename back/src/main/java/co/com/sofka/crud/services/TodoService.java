@@ -5,6 +5,8 @@ import co.com.sofka.crud.repositories.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TodoService {
 
@@ -25,6 +27,10 @@ public class TodoService {
 
     public Todo get(Long id){
          return repository.findById(id).orElseThrow();
+    }
+
+    public List<Todo> getListId (Integer id) {
+        return repository.getListId(id);
     }
 
 }

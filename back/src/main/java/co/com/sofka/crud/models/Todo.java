@@ -13,14 +13,14 @@ public class Todo {
     private String name;
     private boolean completed;
     @Column(nullable = false)
-    private Integer toDoListId;
+    private Integer listId;
 
-    public Integer getToDoListId() {
-        return toDoListId;
+    public Integer getListId() {
+        return listId;
     }
 
-    public void setToDoListId(Integer toDoListId) {
-        this.toDoListId = toDoListId;
+    public void setToDoListId(Integer listId) {
+        this.listId = listId;
     }
 
     public Long getId() {
