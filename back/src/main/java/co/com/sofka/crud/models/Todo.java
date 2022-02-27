@@ -1,5 +1,6 @@
 package co.com.sofka.crud.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,14 +12,15 @@ public class Todo {
     private Long id;
     private String name;
     private boolean completed;
-    private String groupListId;
+    @Column(nullable = false)
+    private Integer toDoListId;
 
-    public String getGroupListId() {
-        return groupListId;
+    public Integer getToDoListId() {
+        return toDoListId;
     }
 
-    public void setGroupListId(String groupListId) {
-        this.groupListId = groupListId;
+    public void setToDoListId(Integer toDoListId) {
+        this.toDoListId = toDoListId;
     }
 
     public Long getId() {
