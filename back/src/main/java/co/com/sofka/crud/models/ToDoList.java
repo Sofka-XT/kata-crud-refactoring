@@ -1,8 +1,8 @@
 package co.com.sofka.crud.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class ToDoList {
@@ -11,6 +11,16 @@ public class ToDoList {
     @GeneratedValue
     private Long id;
     private String name;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "ToDoList_ToDo",
+            joinColumns = @JoinColumn(name = "ToDoList_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "ToDo_id", referencedColumnName = "id"))
+    private List<Todo> Todos = new ArrayList<>();
+
+    public List<Todo> getTodos() {
+        return Todos;
+    }
 
     public Long getId() {
         return id;
