@@ -231,7 +231,7 @@ function App() {
 
   const fetchApi = async () => {
     try {
-      return await fetch(urlApi + "/todos")
+      return await fetch(urlApi + "/1/list")
     } catch (error) {
       console.log(error)
     }
@@ -240,8 +240,8 @@ function App() {
   useEffect(() => {
     fetchApi()
       .then((response) => response.json())
-      .then((items) => setToDos(items))
-  }, [])
+      .then((items) => setToDos(items.todos));
+  }, []);
 
     const crearToDo = async (toDo) => {
       try {
