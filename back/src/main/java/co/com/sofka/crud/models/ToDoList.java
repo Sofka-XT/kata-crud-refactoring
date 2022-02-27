@@ -13,10 +13,14 @@ public class ToDoList {
     private String name;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "ToDoList_ToDo",
-            joinColumns = @JoinColumn(name = "ToDoList_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "ToDo_id", referencedColumnName = "id"))
+    @JoinTable(name = "todolist_todo",
+            joinColumns = @JoinColumn(name = "todolist_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "todo_id", referencedColumnName = "id"))
     private List<Todo> Todos = new ArrayList<>();
+
+    public void setTodos(List<Todo> todos) {
+        Todos = todos;
+    }
 
     public List<Todo> getTodos() {
         return Todos;
