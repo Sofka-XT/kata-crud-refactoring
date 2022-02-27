@@ -29,8 +29,8 @@ public class TodoService {
          return repository.findById(id).orElseThrow();
     }
 
-    public List<Todo> findByListId (Integer id) {
-        return repository.findByListId(id);
+    public List<Todo> findByToDoList (Long id) {
+        return repository.findByToDoList(id);
     }
 
 }
