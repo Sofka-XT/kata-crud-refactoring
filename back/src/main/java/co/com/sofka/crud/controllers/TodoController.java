@@ -50,7 +50,7 @@ public class TodoController {
 
     @GetMapping(value = "api/{id}/todos")
     public List<Todo> getByListId(@PathVariable("id") Integer id){
-        return service.getListId(id);
+        return service.findByListId(id);
     }
 
 }
