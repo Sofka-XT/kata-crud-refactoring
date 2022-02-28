@@ -19,25 +19,6 @@ function App() {
   const [ToDos, setToDos] = useState([])
   const [ToDoActual, setToDoActual] = useState();
 
-  const numeroListas = async () => {
-    try {
-      return await fetch(urlApi + "/todolists")
-        .then((response) => response.json())
-        .then((num) => num.length)
-
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  const fetchApi = async (id) => {
-    try {
-      return await fetch(urlApi + `/${id}/list`)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
     const crearToDo = async (toDo) => {
       try {
         await fetch(urlApi + "/todo", {
