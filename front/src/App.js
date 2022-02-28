@@ -10,6 +10,7 @@ import React, {
 import { ToDoForm } from "./components/ToDoForm";
 import { ToDosItems } from "./components/ToDosItems";
 import { ToDoLists } from "./components/ToDoLists";
+import { ListForm } from "./components/ListForm";
 
 export const urlApi = "http://localhost:8080/api";
 
@@ -29,24 +30,24 @@ function App() {
           },
         })
           .then((response) => response.json())
-          .then((item) => setToDos([...ToDos, item]));
+          .then((item) => setLists([...ToDos, item]));
 
       } catch (error) {
         console.log(error);
       }
     };
 
-    const crearLista = async (toDo) => {
+    const crearLista = async (lista) => {
       try {
-        await fetch(urlApi + "/todo", {
+        await fetch(urlApi + "/todolist", {
           method: "POST",
-          body: JSON.stringify(toDo),
+          body: JSON.stringify(lista),
           headers: {
             "Content-Type": "application/json",
           },
         })
           .then((response) => response.json())
-          .then((item) => setToDos([...ToDos, item]));
+          .then((item) => setToDos([...Lists, item]));
       } catch (error) {
         console.log(error);
       }
@@ -108,6 +109,22 @@ function App() {
     }
   };
 
+    const eliminarLista = async (lista) => {
+      try {
+        await fetch(urlApi + "/" + lista.id + "/todolist", {
+          method: "DELETE",
+          body: JSON.stringify(lista),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        setLists(Lists.filter((element) => element.id !== lista.id));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
   const insertTodo = (lista) => {
     return (
       <ToDosItems
@@ -137,7 +154,7 @@ function App() {
     <div>
       <h3>To-Do List</h3>
       <div className="">
-
+        <ListForm crearLista={crearLista} />
         <ToDoLists
           Lists={Lists}
           setLists={setLists}
@@ -149,8 +166,8 @@ function App() {
           setToDoActual={setToDoActual}
           insertTodo={insertTodo}
           insertForm={insertForm}
+          eliminarLista={eliminarLista}
         ></ToDoLists>
-
       </div>
     </div>
   );

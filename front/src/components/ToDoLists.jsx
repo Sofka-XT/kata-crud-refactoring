@@ -16,7 +16,15 @@ export const ToDoLists = (props) => {
         {listas.map((lista) => {
           return (
             <div key={lista.id}>
-              <h1>{lista.name}</h1>
+              <div>
+                <h1>{lista.name}</h1>
+                <button
+                  className="btn btn-success m-3"
+                  onClick={() => {
+                    props.eliminarLista(lista);
+                  }}
+                >Eliminar</button>
+              </div>
               {props.insertForm(lista)}
               {props.insertTodo(lista)}
             </div>
