@@ -17,7 +17,8 @@ export const urlApi = "http://localhost:8080/api";
 function App() {
 
   const [Lists, setLists] = useState([]);
-  const [ToDos, setToDos] = useState([])
+  const [ToDos, setToDos] = useState([]);
+  const [DTOS, setDTOS] = useState([]);
   const [ToDoActual, setToDoActual] = useState();
 
     const crearToDo = async (toDo) => {
@@ -167,6 +168,8 @@ function App() {
           insertTodo={insertTodo}
           insertForm={insertForm}
           eliminarLista={eliminarLista}
+          DTOS={DTOS}
+          setDTOS={setDTOS}
         ></ToDoLists>
       </div>
     </div>

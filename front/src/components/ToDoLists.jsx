@@ -1,15 +1,29 @@
 import React, { useEffect } from "react";
-import { fetchListas, fetchApi } from "./GetFunctions";
+import { fetchListas, fetchApi, fetchDTO } from "./GetFunctions";
 import { ToDosItems } from "./ToDosItems";
 
 export const ToDoLists = (props) => {
   const listas = props.Lists ? props.Lists : []
+  const dtos = props.DTOS ? props.DTOS : []
   useEffect(() => {
     fetchListas()
     .then((response) => response.json())
-    .then((list) => props.setLists(list));
+    .then((list) => {
+      let arrayDTOS = []
+      list.forEach(element => {
+            console.log(element.id)
+        fetchDTO(element.id)
+          .then((response) => response.json())
+          .then((dto) => {
+            arrayDTOS.push(dto)
+          });
+      });
+      props.setDTOS(arrayDTOS);
+    })
+
   }, [])
 
+  console.log(dtos);
   if (listas) {
     return (
       <div>

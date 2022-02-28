@@ -14,12 +14,12 @@ export const ToDosItems = (props) => {
     textDecoration: "line-through",
   };
 
-  const onChange = (event, toDo) => {
+  const onChange = (event, toDo, lista) => {
     const request = {
       name: toDo.name,
       id: toDo.id,
       completed: event.target.checked,
-      toDoList: props.lista.id
+      toDoList: lista
     };
 
     props.actualizarToDo(request);
@@ -63,7 +63,7 @@ export const ToDosItems = (props) => {
                         <button
                           className="btn btn-danger"
                           onClick={() =>
-                            onClick(toDo, props.lista, props.eliminarToDo)
+                            onClick(toDo, props.eliminarToDo)
                           }
                         >
                           Eliminar
@@ -73,7 +73,7 @@ export const ToDosItems = (props) => {
                         <button
                           className="btn btn-primary"
                           onClick={() =>
-                            onClick(toDo, props.lista, props.setToDoActual)
+                            onClick(toDo, props.setToDoActual)
                           }
                         >
                           Editar

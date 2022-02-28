@@ -15,3 +15,11 @@ export const fetchApi = async (id) => {
     console.log(error);
   }
 };
+
+export const fetchDTO = async (id) => {
+  try {
+    return await fetch(urlApi + `/${id}/list`);
+  } catch (error) {
+    console.log(error);
+  }
+};
