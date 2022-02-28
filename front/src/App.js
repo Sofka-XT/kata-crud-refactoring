@@ -36,6 +36,22 @@ function App() {
       }
     };
 
+    const crearLista = async (toDo) => {
+      try {
+        await fetch(urlApi + "/todo", {
+          method: "POST",
+          body: JSON.stringify(toDo),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => response.json())
+          .then((item) => setToDos([...ToDos, item]));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     const actualizarToDo = async (toDo) => {
       try {
         await fetch(urlApi + "/todo", {
@@ -92,6 +108,20 @@ function App() {
     }
   };
 
+  const insertTodo = (lista) => {
+    return (
+      <ToDosItems
+        ToDos={ToDos}
+        setToDos={setToDos}
+        urlApi={urlApi}
+        actualizarToDo={actualizarToDo}
+        eliminarToDo={eliminarToDo}
+        setToDoActual={setToDoActual}
+        lista={lista}
+      />
+    );
+  }
+
   return (
     <div>
       <h3>To-Do List</h3>
@@ -100,6 +130,7 @@ function App() {
           crearToDo={crearToDo}
           ToDoActual={ToDoActual}
           editarToDo={editarToDo}
+          insertTodo={insertTodo}
         />
         <ToDoLists
           Lists={Lists}
@@ -110,15 +141,9 @@ function App() {
           actualizarToDo={actualizarToDo}
           eliminarToDo={eliminarToDo}
           setToDoActual={setToDoActual}
+          insertTodo={insertTodo}
         ></ToDoLists>
-        {/* <ToDosItems
-          ToDos={ToDos}
-          setToDos={setToDos}
-          urlApi={urlApi}
-          actualizarToDo={actualizarToDo}
-          eliminarToDo={eliminarToDo}
-          setToDoActual={setToDoActual}
-        /> */}
+
       </div>
     </div>
   );

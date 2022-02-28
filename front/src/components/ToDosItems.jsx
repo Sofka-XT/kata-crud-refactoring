@@ -41,40 +41,46 @@ export const ToDosItems = (props) => {
             </thead>
             <tbody>
               {ToDos.map((toDo) => {
-                return (
-                  <tr
-                    className="align-middle"
-                    key={toDo.id}
-                    style={toDo.completed ? decorationDone : {}}
-                  >
-                    <td>{toDo.id}</td>
-                    <td>{toDo.name}</td>
-                    <td className="form-check form-switch d-flex align-items-center justify-content-center">
-                      <input
-                        className="form-check-input align-self-center"
-                        type="checkbox"
-                        defaultChecked={toDo.completed}
-                        onChange={(event) => onChange(event, toDo)}
-                      ></input>
-                    </td>
-                    <td>
-                      <button
-                        className="btn btn-danger"
-                        onClick={() => onClick(toDo, props.eliminarToDo)}
-                      >
-                        Eliminar
-                      </button>
-                    </td>
-                    <td>
-                      <button
-                        className="btn btn-primary"
-                        onClick={() => onClick(toDo, props.setToDoActual)}
-                      >
-                        Editar
-                      </button>
-                    </td>
-                  </tr>
-                );
+                if (toDo.toDoList == props.lista.id) {
+                  return (
+                    <tr
+                      className="align-middle"
+                      key={toDo.id}
+                      style={toDo.completed ? decorationDone : {}}
+                    >
+                      <td>{toDo.id}</td>
+                      <td>{toDo.name}</td>
+                      <td className="form-check form-switch d-flex align-items-center justify-content-center">
+                        <input
+                          className="form-check-input align-self-center"
+                          type="checkbox"
+                          defaultChecked={toDo.completed}
+                          onChange={(event) => onChange(event, toDo, props.lista)}
+                        ></input>
+                      </td>
+                      <td>
+                        <button
+                          className="btn btn-danger"
+                          onClick={() =>
+                            onClick(toDo, props.lista, props.eliminarToDo)
+                          }
+                        >
+                          Eliminar
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          className="btn btn-primary"
+                          onClick={() =>
+                            onClick(toDo, props.lista, props.setToDoActual)
+                          }
+                        >
+                          Editar
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                }
               })}
             </tbody>
           </table>
