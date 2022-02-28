@@ -12,6 +12,7 @@ export const ToDoForm = (props) => {
         name: string,
         id: props.ToDoActual ? props.ToDoActual.id : null,
         completed: props.ToDoActual ? props.ToDoActual.completed : false,
+        toDoList: props.lista.id
       };
 
       props.ToDoActual ? props.editarToDo(request) : props.crearToDo(request);

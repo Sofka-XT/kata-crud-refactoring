@@ -17,6 +17,7 @@ export const ToDoLists = (props) => {
           return (
             <div key={lista.id}>
               <h1>{lista.name}</h1>
+              {props.insertForm(lista)}
               {props.insertTodo(lista)}
             </div>
           );

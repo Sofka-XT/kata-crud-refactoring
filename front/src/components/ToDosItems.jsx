@@ -19,6 +19,7 @@ export const ToDosItems = (props) => {
       name: toDo.name,
       id: toDo.id,
       completed: event.target.checked,
+      toDoList: props.lista.id
     };
 
     props.actualizarToDo(request);

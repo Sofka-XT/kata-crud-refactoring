@@ -122,16 +122,22 @@ function App() {
     );
   }
 
+  const insertForm = (lista) => {
+    return (
+      <ToDoForm
+        crearToDo={crearToDo}
+        ToDoActual={ToDoActual}
+        editarToDo={editarToDo}
+        lista={lista}
+      />
+    );
+  }
+
   return (
     <div>
       <h3>To-Do List</h3>
       <div className="">
-        <ToDoForm
-          crearToDo={crearToDo}
-          ToDoActual={ToDoActual}
-          editarToDo={editarToDo}
-          insertTodo={insertTodo}
-        />
+
         <ToDoLists
           Lists={Lists}
           setLists={setLists}
@@ -142,6 +148,7 @@ function App() {
           eliminarToDo={eliminarToDo}
           setToDoActual={setToDoActual}
           insertTodo={insertTodo}
+          insertForm={insertForm}
         ></ToDoLists>
 
       </div>
