@@ -1,7 +1,15 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import { fetchApi } from "./GetFunctions";
 
-export const ToDoList = (props) => {
+export const ToDosItems = (props) => {
   const ToDos = props.ToDos ? props.ToDos : []
+
+  useEffect(() => {
+    fetchApi()
+    .then(response => response.json())
+    .then(items => props.setToDos(items))
+  }, [])
+
   const decorationDone = {
     textDecoration: "line-through",
   };
