@@ -30,7 +30,7 @@ function App() {
           },
         })
           .then((response) => response.json())
-          .then((item) => setLists([...ToDos, item]));
+          .then((item) => setToDos([...ToDos, item]));
 
       } catch (error) {
         console.log(error);
@@ -47,7 +47,7 @@ function App() {
           },
         })
           .then((response) => response.json())
-          .then((item) => setToDos([...Lists, item]));
+          .then((item) => setLists([...Lists, item]));
       } catch (error) {
         console.log(error);
       }

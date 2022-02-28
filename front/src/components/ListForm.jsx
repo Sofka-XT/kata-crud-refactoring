@@ -27,7 +27,7 @@ export const ListForm = (props) => {
         className="p-1"
         type="text"
         name="name"
-        placeholder="¿Qué nombre quieres para tu lista?"
+        placeholder="Lista To-Do"
         defaultValue=""
         required
       ></input>
