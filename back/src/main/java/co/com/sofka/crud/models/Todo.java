@@ -1,8 +1,6 @@
-package co.com.sofka.crud;
+package co.com.sofka.crud.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Todo {
@@ -11,14 +9,16 @@ public class Todo {
     private Long id;
     private String name;
     private boolean completed;
-    private String groupListId;
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name="fk_toDoList")
+    private Long toDoList;
 
-    public String getGroupListId() {
-        return groupListId;
+    public Long getToDoList() {
+        return toDoList;
     }
 
-    public void setGroupListId(String groupListId) {
-        this.groupListId = groupListId;
+    public void setToDoList(Long toDoList) {
+        this.toDoList = toDoList;
     }
 
     public Long getId() {
