@@ -27,4 +27,8 @@ public class TodoList{
     public TodoList(){
 
     }
+
+    public TodoList(String name){
+        this.nameList =name;
+    }
 }
