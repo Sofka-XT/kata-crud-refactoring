@@ -2,10 +2,8 @@ package co.com.sofka.crud.models;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
-import javax.websocket.server.ServerEndpoint;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +21,10 @@ public class TodoList{
     private String nameList;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "groupListId")
+    @JoinColumn(name = "group_list_id")
     private List<Todo> todos = new ArrayList<>();
+
+    public TodoList(){
+
+    }
 }
