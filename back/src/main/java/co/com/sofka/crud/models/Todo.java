@@ -1,47 +1,36 @@
 package co.com.sofka.crud.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
 
+import javax.persistence.*;
+
+@Getter
+@Setter
 @Entity
+@Table(name = "todo")
 public class Todo {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true, nullable = false)
     private Long id;
+
+    @Column(length = 25, nullable = false)
     private String name;
+
+    @Column()
     private boolean completed;
+
+    @Column()
     private String groupListId;
 
-    public String getGroupListId() {
-        return groupListId;
+
+    public Todo(){
+
     }
 
-    public void setGroupListId(String groupListId) {
-        this.groupListId = groupListId;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public Todo(String name, boolean completed) {
         this.name = name;
-    }
-
-    public boolean isCompleted() {
-        return completed;
-    }
-
-    public void setCompleted(boolean completed) {
         this.completed = completed;
     }
 }
