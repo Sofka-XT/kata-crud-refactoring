@@ -22,11 +22,16 @@ public class Todo {
     private boolean completed;
 
     @Column()
-    private String groupListId;
+    private Long group_list_id;
 
 
     public Todo(){
 
     }
 
+    public Todo(String name, boolean completed, Long group_list_id) {
+        this.name = name;
+        this.completed = completed;
+        this.group_list_id = group_list_id;
+    }
 }
