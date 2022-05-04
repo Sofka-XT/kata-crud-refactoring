@@ -15,7 +15,7 @@ public class Todo {
     @Column(unique = true, nullable = false)
     private Long id;
 
-    @Column(length = 25, nullable = false)
+    @Column()
     private String name;
 
     @Column()
@@ -29,8 +29,4 @@ public class Todo {
 
     }
 
-    public Todo(String name, boolean completed) {
-        this.name = name;
-        this.completed = completed;
-    }
 }
