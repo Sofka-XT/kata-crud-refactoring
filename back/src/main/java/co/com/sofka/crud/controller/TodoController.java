@@ -23,7 +23,7 @@ public class TodoController {
         return service.save(dto);
     }
 
-    @PutMapping(value = "api/todo/actualizar")
+    @PutMapping(value = "api/todo")
     public TodoDto update(@RequestBody TodoDto dto){
         if(dto.getId() != null){
             return service.save(dto);
