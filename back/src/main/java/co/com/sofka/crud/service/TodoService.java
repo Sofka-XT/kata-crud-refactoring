@@ -1,7 +1,7 @@
 package co.com.sofka.crud.service;
 
 import co.com.sofka.crud.dto.TodoDto;
-import co.com.sofka.crud.mapper.MapperTodoDto;
+import co.com.sofka.crud.mapper.MapperTodo;
 import co.com.sofka.crud.models.Todo;
 import co.com.sofka.crud.repository.TodoRepository;
 import co.com.sofka.crud.service.interfaces.ITodoService;
@@ -19,35 +19,38 @@ public class TodoService implements ITodoService {
 
     @Autowired
     private TodoRepository repository;
+
     @Autowired
-    private ModelMapper modelMapper;
+    private MapperTodo mapper;
 
     @Override
     public Iterable<TodoDto> list(){
         List<TodoDto>dtos = new ArrayList<>();
-        repository.findAll().forEach(todo->dtos.add(modelMapper.map(todo,TodoDto.class)));
+        repository.findAll().forEach(todo -> dtos.add(mapper.entitytodto(todo)));
         return dtos;
     }
 
     @Override
     public TodoDto save(TodoDto dto){
-        Todo todoEntity =modelMapper.map(dto,Todo.class);
+        Todo todoEntity =mapper.dtoToEntity(dto);
         todoEntity = repository.save(todoEntity);
-        return modelMapper.map(todoEntity,TodoDto.class);
+        return mapper.entitytodto(todoEntity);
     }
 
     @Override
     public void delete(Long id){
-        repository.delete(get(id));
+        Todo todoEntity = mapper.dtoToEntity(get(id));
+        repository.delete(todoEntity);
     }
 
     @Override
-    public Todo get(Long id){
+    public TodoDto get(Long id){
         Optional<Todo> optionalTodo = repository.findById(id);
         if(optionalTodo.isEmpty()){
             throw new NoSuchElementException("No existe una lista con ese id");
         }
-        return repository.findById(id).orElseThrow();
+        TodoDto tododto = mapper.entitytodto(optionalTodo.get());
+        return tododto;
     }
 
 }
