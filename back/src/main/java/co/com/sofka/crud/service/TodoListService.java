@@ -1,13 +1,10 @@
 package co.com.sofka.crud.service;
 
-import co.com.sofka.crud.dto.TodoDto;
 import co.com.sofka.crud.dto.TodoListDto;
-import co.com.sofka.crud.models.Todo;
+import co.com.sofka.crud.mapper.MapperTodoList;
 import co.com.sofka.crud.models.TodoList;
 import co.com.sofka.crud.repository.TodoListRepository;
-import co.com.sofka.crud.repository.TodoRepository;
 import co.com.sofka.crud.service.interfaces.ITodoListService;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,37 +15,41 @@ import java.util.Optional;
 
 @Service
 public class TodoListService implements ITodoListService {
+
     @Autowired
     private TodoListRepository repository;
+
     @Autowired
-    private ModelMapper modelMapper;
+    private MapperTodoList mapper;
 
     @Override
     public Iterable<TodoListDto> list(){
         List<TodoListDto> dtos = new ArrayList<>();
-        repository.findAll().forEach(todoList ->dtos.add(modelMapper.map(todoList,TodoListDto.class)));
+        repository.findAll().forEach(todoList ->dtos.add(mapper.entitytodto(todoList)));
         return dtos;
     }
 
     @Override
     public TodoListDto save(TodoListDto dto){
-        TodoList todoListEntity =modelMapper.map(dto,TodoList.class);
+        TodoList todoListEntity =mapper.dtoToEntity(dto);
         todoListEntity = repository.save(todoListEntity);
-        return modelMapper.map(todoListEntity,TodoListDto.class);
-    }
+        return mapper.entitytodto(todoListEntity);
+          }
 
     @Override
     public void delete(Long id){
-        repository.delete(get(id));
-    }
+        TodoList todoListEntity = mapper.dtoToEntity(get(id));
+        repository.delete(todoListEntity);
+         }
 
     @Override
-    public TodoList get(Long id){
-        Optional<TodoList> optionalTodo = repository.findById(id);
-        if(optionalTodo.isEmpty()){
+    public TodoListDto get(Long id){
+        Optional<TodoList> optionalTodoList = repository.findById(id);
+        if(optionalTodoList.isEmpty()){
             throw new NoSuchElementException("No existe una lista con ese id");
         }
-        return repository.findById(id).orElseThrow();
+        TodoListDto todoListDto = mapper.entitytodto(optionalTodoList.get());
+        return todoListDto;
     }
 }
 
