@@ -11,19 +11,18 @@ import javax.validation.constraints.NotBlank;
 public class TodoDto {
 
     private Long id;
-
     private String name;
     private boolean completed;
-    private String groupListId;
+    private Long group_list_id;
 
     public TodoDto(){
 
     }
 
-    public TodoDto(String name, boolean completed, String groupListId) {
+    public TodoDto(String name, boolean completed, Long groupListId) {
         this.name = name;
         this.completed = completed;
-        this.groupListId = groupListId;
+        this.group_list_id = groupListId;
     }
 }
 

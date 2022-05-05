@@ -12,10 +12,10 @@ import java.util.List;
 @Entity
 @Table(name="ListTodo")
 public class TodoList{
+
     @javax.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_list", nullable = false)
-    private Long idList;
+    private Long id;
 
     @Column()
     private String nameList;

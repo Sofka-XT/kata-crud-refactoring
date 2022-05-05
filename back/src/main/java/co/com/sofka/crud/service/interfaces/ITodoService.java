@@ -7,5 +7,5 @@ public interface ITodoService {
     public Iterable<TodoDto> list();
     public TodoDto save(TodoDto dto);
     public void delete(Long id);
-    public Todo get(Long id);
+    public TodoDto get(Long id);
 }

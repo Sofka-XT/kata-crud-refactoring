@@ -68,7 +68,7 @@ class TodoListServiceTest {
             //Act
             Optional<TodoList> todoListModelBuscado = todoListRepository.findById(idBuscado);
             // Assert
-            assertThat(todoListModelBuscado.get().getIdList()).isEqualTo(idBuscado);
+            assertThat(todoListModelBuscado.get().getId()).isEqualTo(idBuscado);
 
     }
 }
