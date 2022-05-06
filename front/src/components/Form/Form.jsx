@@ -3,8 +3,7 @@ import Store from '../Util/Store'
 
 const HOST_API = "http://localhost:8080/api";
 
-
-const Form = () => {
+const Form = ({listId}) => {
     const formRef = useRef(null);
     const { dispatch, state: { todo } } = useContext(Store);
     const item = todo.item;
@@ -16,7 +15,8 @@ const Form = () => {
       const request = {
         name: state.name,
         id: null,
-        completed: false
+        completed: false,
+        groupListId: listId
       };
   
   
@@ -41,7 +41,8 @@ const Form = () => {
       const request = {
         name: state.name,
         id: item.id,
-        isCompleted: item.isCompleted
+        isCompleted: item.isCompleted,
+        groupListId: listId
       };
   
   
@@ -72,7 +73,6 @@ const Form = () => {
       {item.id && <button onClick={onEdit}>Actualizar</button>}
       {!item.id && <button onClick={onAdd}>Crear</button>}
     </form>
-  }
-  
-  export {Form}
-  
+}
+
+  export default Form;

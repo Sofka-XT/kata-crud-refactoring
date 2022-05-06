@@ -1,5 +1,6 @@
 package co.com.sofka.crud.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,7 +24,6 @@ public class Todo {
 
     @Column()
     private Long groupListId;
-
 
     public Todo(){
 

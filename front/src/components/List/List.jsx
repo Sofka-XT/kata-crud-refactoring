@@ -3,9 +3,12 @@ import Store from '../Util/Store'
 
 const HOST_API = "http://localhost:8080/api";
 
-const List = () => {
+const List = ({listId}) => {
+  
     const { dispatch, state: { todo } } = useContext(Store);
-    const currentList = todo.list;
+    const currentList = todo.list.filter(todo => {
+      return todo.groupListId === listId;
+    });
   
     useEffect(() => {
       fetch(HOST_API + "/todos")
@@ -32,7 +35,8 @@ const List = () => {
       const request = {
         name: todo.name,
         id: todo.id,
-        completed: event.target.checked
+        completed: event.target.checked,
+        groupListId: listId
       };
       fetch(HOST_API + "/todo", {
         method: "PUT",
@@ -73,5 +77,5 @@ const List = () => {
       </table>
     </div>
   }
-  
-  export {List}
+
+  export default List;
