@@ -6,6 +6,7 @@ import co.com.sofka.crud.models.TodoList;
 import co.com.sofka.crud.repository.TodoListRepository;
 import co.com.sofka.crud.service.interfaces.ITodoListService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -31,6 +32,9 @@ public class TodoListService implements ITodoListService {
 
     @Override
     public TodoListDto save(TodoListDto dto){
+        if(dto.getNameList() ==null){
+            throw new DuplicateKeyException("Debe ingresar un nombre");
+        }
         TodoList todoList = mapper.dtomapperTodolist(dto);
         return mapper.entitylistmapperdtolist(todoListRepository.save(todoList));
     }

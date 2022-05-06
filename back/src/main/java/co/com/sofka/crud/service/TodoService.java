@@ -6,6 +6,7 @@ import co.com.sofka.crud.models.Todo;
 import co.com.sofka.crud.repository.TodoRepository;
 import co.com.sofka.crud.service.interfaces.ITodoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -31,6 +32,9 @@ public class TodoService implements ITodoService {
 
     @Override
     public TodoDto save(TodoDto dto){
+        if(dto.getName()==null){
+            throw new DuplicateKeyException("Debe ingresar un nombre");
+        }
         Todo todo = mapper.dtomapperentity(dto);
         return mapper.entitymapperdto(repository.save(todo));
     }
