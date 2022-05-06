@@ -3,7 +3,7 @@ import Store from '../Util/Store'
 
 
 
-const HOST_API = "http://localhost:8080/api/List";
+const HOST_API = "http://localhost:8080/api";
 
 const ListForm = () => {
   const formRef = useRef(null);
@@ -23,7 +23,7 @@ const ListForm = () => {
       method: "POST",
       body: JSON.stringify(request),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type':'application/json'
       }
     })
       .then(response => response.json())

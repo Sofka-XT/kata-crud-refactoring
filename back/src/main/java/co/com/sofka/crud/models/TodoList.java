@@ -1,5 +1,6 @@
 package co.com.sofka.crud.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
