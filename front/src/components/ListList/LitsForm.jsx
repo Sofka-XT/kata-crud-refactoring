@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { Fragment, useContext, useRef, useState } from 'react';
 import Store from '../Util/Store'
 
 
@@ -23,7 +23,7 @@ const ListForm = () => {
       method: "POST",
       body: JSON.stringify(request),
       headers: {
-        'Content-Type':'application/json'
+        'Content-Type': 'application/json'
       }
     })
       .then(response => response.json())
@@ -34,18 +34,27 @@ const ListForm = () => {
       });
   }
 
-  return <form ref={formRef} className="form">
-    <input
-      type="text"
-      name="name"
-      placeholder="Nombre de la categoria"
-      onChange={(event) => {
-        setState({ ...state, nameList: event.target.value })
-      }}  ></input>
-    <br />
-    <button onClick={onAdd} >Crear</button>
-    <br />
-  </form>
+  return (
+    <Fragment>
+      <form ref={formRef}>
+        <div className='form-group mx-sm-5'>
+          <label  for="inputUser" className="sr-only">Nombre de la lista de tarea</label>
+        <input
+          className='form-control'
+          type="text"
+          name="name"
+          placeholder="Lista de tareas"
+          onChange={(event) => {
+            setState({ ...state, nameList: event.target.value })
+          }}  ></input>
+        <br />
+        <button className="btn btn-success" onClick={onAdd} >Crear</button>
+        <br />
+        </div>
+          </form>
+
+    </Fragment>
+  )
 }
 
 export default ListForm;

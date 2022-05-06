@@ -11,17 +11,21 @@ import java.util.List;
 @Setter
 @Getter
 @Entity
-@Table(name="ListTodo")
+@Table(name="list")
 public class TodoList{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true,nullable = false)
     private Long id;
 
     @Column()
     private String nameList;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "groupListId")
+    @OneToMany(fetch = FetchType.EAGER,
+                targetEntity = Todo.class,
+                cascade = CascadeType.REMOVE,
+                mappedBy = "list")
+    @JsonManagedReference
     private List<Todo> todos = new ArrayList<>();
 
     public TodoList(){

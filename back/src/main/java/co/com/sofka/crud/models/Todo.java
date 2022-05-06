@@ -25,6 +25,14 @@ public class Todo {
     @Column()
     private Long groupListId;
 
+    @ManyToOne(
+            fetch = FetchType.LAZY,
+            targetEntity = TodoList.class,
+            optional = false)
+    @JoinColumn(name = "todoId",nullable = false)
+    @JsonBackReference
+    private TodoList list;
+
     public Todo(){
 
     }
