@@ -17,39 +17,38 @@ import java.util.Optional;
 public class TodoListService implements ITodoListService {
 
     @Autowired
-    private TodoListRepository repository;
+    private TodoListRepository todoListRepository;
 
     @Autowired
     private MapperTodoList mapper;
 
     @Override
     public Iterable<TodoListDto> list(){
-        List<TodoListDto> dtos = new ArrayList<>();
-        repository.findAll().forEach(todoList ->dtos.add(mapper.entitytodto(todoList)));
+        List<TodoListDto> dtos =new ArrayList<>();
+        todoListRepository.findAll().forEach(todoByCategory -> dtos.add(mapper.entitylistmapperdtolist(todoByCategory)));
         return dtos;
     }
 
     @Override
     public TodoListDto save(TodoListDto dto){
-        TodoList todoListEntity =mapper.dtoToEntity(dto);
-        todoListEntity = repository.save(todoListEntity);
-        return mapper.entitytodto(todoListEntity);
-          }
+        TodoList todoList = mapper.dtomapperTodolist(dto);
+        return mapper.entitylistmapperdtolist(todoListRepository.save(todoList));
+    }
 
     @Override
     public void delete(Long id){
-        TodoList todoListEntity = mapper.dtoToEntity(get(id));
-        repository.delete(todoListEntity);
-         }
+        TodoList todoList = new TodoList();
+        todoList = mapper.dtomapperTodolist(get(id));
+        todoListRepository.delete(todoList);
+    }
 
     @Override
     public TodoListDto get(Long id){
-        Optional<TodoList> optionalTodoList = repository.findById(id);
-        if(optionalTodoList.isEmpty()){
-            throw new NoSuchElementException("No existe una lista con ese id");
+        Optional<TodoList> optionalList = todoListRepository.findById(id);
+        if(optionalList.isEmpty()){
+            throw new NoSuchElementException("No existe una categoria con el id " + id);
         }
-        TodoListDto todoListDto = mapper.entitytodto(optionalTodoList.get());
-        return todoListDto;
+        return  mapper.entitylistmapperdtolist(optionalList.get());
     }
 }
 

@@ -12,8 +12,7 @@ import java.util.List;
 @Entity
 @Table(name="ListTodo")
 public class TodoList{
-
-    @javax.persistence.Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -21,7 +20,7 @@ public class TodoList{
     private String nameList;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "group_list_id")
+    @JoinColumn(name = "groupListId")
     private List<Todo> todos = new ArrayList<>();
 
     public TodoList(){
