@@ -13,7 +13,7 @@ public class TodoDto {
     private Long id;
     private String name;
     private boolean completed;
-    private Long group_list_id;
+    private Long groupListId;
 
     public TodoDto(){
 
@@ -22,7 +22,7 @@ public class TodoDto {
     public TodoDto(String name, boolean completed, Long groupListId) {
         this.name = name;
         this.completed = completed;
-        this.group_list_id = groupListId;
+        this.groupListId = groupListId;
     }
 }
 

@@ -13,6 +13,4 @@ public class TodoListDto {
     public String nameList;
     private List<TodoDto> todos = new ArrayList<>();
 
-
-
 }
