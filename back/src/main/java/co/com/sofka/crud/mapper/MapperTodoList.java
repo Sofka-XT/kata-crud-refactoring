@@ -13,15 +13,17 @@ public class MapperTodoList implements IMapperTodoList {
     @Autowired
     private ModelMapper modelMapper;
 
+    //convertir de todoList a todolistdto
     @Override
-    public TodoListDto entitylistmapperdtolist(TodoList todoList){
+    public TodoListDto mapperTodoListDto(TodoList todoList){
         TodoListDto todoListDto = new TodoListDto();
         todoListDto = modelMapper.map(todoList, TodoListDto.class);
         return todoListDto;
     }
 
-    @Override
-    public TodoList dtomapperTodolist(TodoListDto listDto){
+    //convertir de todoDto a todoList
+   @Override
+    public TodoList mapperTodoList(TodoListDto listDto){
         TodoList todoList = new TodoList();
         todoList = modelMapper.map(listDto, TodoList.class);
         return todoList;

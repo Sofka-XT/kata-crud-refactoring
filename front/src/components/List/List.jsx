@@ -4,10 +4,12 @@ import Store from '../Util/Store'
 const HOST_API = "http://localhost:8080/api";
 const List = ({ listId }) => {
 
+  //usando los hooks
   const { dispatch, state: { todo } } = useContext(Store);
   const currentList = todo.list.filter(todo => {
     return todo.groupListId === listId;
   });
+
 
   useEffect(() => {
     fetch(HOST_API + "/todos")
@@ -17,7 +19,7 @@ const List = ({ listId }) => {
       })
   }, [dispatch]);
 
-
+//Funcion para eliminar todo
   const onDelete = (id) => {
     fetch(HOST_API + "/" + id + "/todo", {
       method: "DELETE"
@@ -25,7 +27,7 @@ const List = ({ listId }) => {
       dispatch({ type: "delete-item", id })
     })
   };
-
+//Funcion para editar
   const onEdit = (todo) => {
     dispatch({ type: "edit-item", item: todo })
   };

@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class CrudApplication {
 
+	//bean de la clase model mapper
 	@Bean
 	public ModelMapper modelMapper() {
 		return new ModelMapper();

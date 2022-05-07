@@ -25,6 +25,7 @@ public class Todo {
     @Column()
     private Long groupListId;
 
+    //Relacion muchos a uno debido a que varios todo puede estar en una lista
     @ManyToOne(
             fetch = FetchType.LAZY,
             targetEntity = TodoList.class,

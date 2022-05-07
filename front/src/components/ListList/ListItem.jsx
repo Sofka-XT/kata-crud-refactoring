@@ -16,7 +16,7 @@ const ListItem = () => {
       })
   }, [dispatch]);
 
-
+//Eliminar lista de listas
   const onDelete = (id) => {
     fetch(HOST_API + "/" + id + "/todolist", {
       method: "DELETE"

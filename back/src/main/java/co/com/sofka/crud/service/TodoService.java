@@ -45,7 +45,6 @@ public class TodoService implements ITodoService {
         todo = mapper.dtomapperentity(get(id));
         repository.delete(todo);
     }
-
     @Override
     public TodoDto get(Long id){
         Optional<Todo> optionalListTodo = repository.findById(id);

@@ -3,13 +3,15 @@ import Store from '../Util/Store'
 
 const HOST_API = "http://localhost:8080/api";
 
-
+//Componente Form
 const Form = ({ listId }) => {
+  //usando los hooks
   const formRef = useRef(null);
   const { dispatch, state: { todo } } = useContext(Store);
   const item = todo.item;
   const [state, setState] = useState(item);
 
+  //funcion para añadir elemento
   const onAdd = (event) => {
     event.preventDefault();
 
@@ -36,6 +38,7 @@ const Form = ({ listId }) => {
       });
   }
 
+//Funcion para eliminar todo
   const onEdit = (event) => {
     event.preventDefault();
 

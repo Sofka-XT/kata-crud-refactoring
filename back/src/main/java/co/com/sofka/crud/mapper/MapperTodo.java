@@ -13,12 +13,14 @@ public class MapperTodo implements IMapperTodo {
     @Autowired
     private ModelMapper modelMapper;
 
+    //convertir de Tododto a todo
     public TodoDto entitymapperdto(Todo todo){
         TodoDto dto = new TodoDto();
         dto = modelMapper.map(todo, TodoDto.class);
         return dto;
     }
 
+    //convertir de todo a tododto
     public Todo dtomapperentity(TodoDto dto){
         Todo todo = modelMapper.map(dto, Todo.class);
         return todo;

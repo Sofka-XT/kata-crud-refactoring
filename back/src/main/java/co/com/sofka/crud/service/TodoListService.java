@@ -26,7 +26,7 @@ public class TodoListService implements ITodoListService {
     @Override
     public Iterable<TodoListDto> list(){
         List<TodoListDto> dtos =new ArrayList<>();
-        todoListRepository.findAll().forEach(todoByCategory -> dtos.add(mapper.entitylistmapperdtolist(todoByCategory)));
+        todoListRepository.findAll().forEach(todoByCategory -> dtos.add(mapper.mapperTodoListDto(todoByCategory)));
         return dtos;
     }
 
@@ -35,14 +35,14 @@ public class TodoListService implements ITodoListService {
         if(dto.getNameList() ==null){
             throw new DuplicateKeyException("Debe ingresar un nombre");
         }
-        TodoList todoList = mapper.dtomapperTodolist(dto);
-        return mapper.entitylistmapperdtolist(todoListRepository.save(todoList));
+        TodoList todoList = mapper.mapperTodoList(dto);
+        return mapper.mapperTodoListDto(todoListRepository.save(todoList));
     }
 
     @Override
     public void delete(Long id){
         TodoList todoList = new TodoList();
-        todoList = mapper.dtomapperTodolist(get(id));
+        todoList = mapper.mapperTodoList(get(id));
         todoListRepository.delete(todoList);
     }
 
@@ -52,7 +52,7 @@ public class TodoListService implements ITodoListService {
         if(optionalList.isEmpty()){
             throw new NoSuchElementException("No existe una categoria con el id " + id);
         }
-        return  mapper.entitylistmapperdtolist(optionalList.get());
+        return  mapper.mapperTodoListDto(optionalList.get());
     }
 }
 

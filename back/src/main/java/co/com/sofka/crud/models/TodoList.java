@@ -21,6 +21,7 @@ public class TodoList{
     @Column()
     private String nameList;
 
+    //Relacion de uno a muchos, debido a que un TodoList puede contener varios todo
     @OneToMany(fetch = FetchType.EAGER,
                 targetEntity = Todo.class,
                 cascade = CascadeType.REMOVE,
